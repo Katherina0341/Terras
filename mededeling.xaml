@@ -1,0 +1,46 @@
+﻿<Window x:Class="Het_Terras.mededeling"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Het_Terras"
+        mc:Ignorable="d"
+        Title="mededeling toevoegen" Height="509.244" Width="374.789">
+    <Grid RenderTransformOrigin="0.5,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="375*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFDEDEDE" Offset="1"/>
+                <GradientStop Color="White"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.19"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Label x:Name="auteurLabel" Content="Auteur:" HorizontalAlignment="Left" Margin="14,27,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="auteurTextBox" HorizontalAlignment="Left" Height="23" Margin="0,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="titelLabel" Content="Titel:" HorizontalAlignment="Left" Margin="14,87,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="titelTextBox" HorizontalAlignment="Left" Height="23" Margin="0,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="mededelingLabel" Content="Mededeling:" HorizontalAlignment="Left" Margin="13,148,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
+        <RichTextBox x:Name="mededelingRichTextBox" HorizontalAlignment="Left" Height="213" Margin="0,177,0,0" VerticalAlignment="Top" Width="328" Grid.Column="1">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button x:Name="saveButton" Content="Opslaan" HorizontalAlignment="Left" Margin="0,407,0,0" VerticalAlignment="Top" Width="75" BorderThickness="1" BorderBrush="Black" Grid.Column="1" Click="saveButton_Click"/>
+        <Button x:Name="exitButton" Content="Afsluiten" HorizontalAlignment="Left" Margin="83,407,0,0" VerticalAlignment="Top" Width="75" Click="exitButton_Click" BorderThickness="1" BorderBrush="Black" Grid.Column="1"/>
+        <Label x:Name="confirmLabel" Content="" HorizontalAlignment="Left" Margin="13,434,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+
+    </Grid>
+</Window>

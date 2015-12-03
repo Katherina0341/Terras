@@ -1,0 +1,106 @@
+﻿<Window x:Class="Het_Terras.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Het_Terras"
+        mc:Ignorable="d"
+        Title="Het Terras - Dashboard" WindowStartupLocation="CenterOwner" Height="546.154" Width="750.962" FontWeight="Bold" WindowStyle="ToolWindow" UseLayoutRounding="False">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FF707070" Offset="1"/>
+            <GradientStop Color="White" Offset="0.083"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid x:Name="contentGrid" Margin="0,88,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FFDAD8D8" Offset="1"/>
+                <GradientStop Color="White" Offset="0.462"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="263*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="navGrid" HorizontalAlignment="Center" Height="90" Margin="0,-89,0,0" VerticalAlignment="Top" Width="743">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="690*"/>
+                <ColumnDefinition Width="53*"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid HorizontalAlignment="Left" Width="743" OpacityMask="#FFFF5E5E" Opacity="0.995" Margin="0,1,0,-1" Grid.ColumnSpan="2" >
+                <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="751" Grid.ColumnSpan="3" Margin="0,0,-8,0" />
+                <Grid.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+                </Grid.Background>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0*"/>
+                    <ColumnDefinition Width="304*"/>
+                    <ColumnDefinition Width="439*"/>
+
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+            <Button x:Name="dashboardButton" Content="Dashboard" HorizontalAlignment="Left" Margin="19,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black"/>
+            <Button x:Name="roosterButton" Content="Roosters" HorizontalAlignment="Left" Margin="108,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="roosterButton_Click"/>
+            <Button x:Name="personeelButton" Content="Personeel" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="personeelButton_Click"/>
+            <Button x:Name="uitlogButton" Content="Uitloggen" HorizontalAlignment="Left" Margin="288,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black"/>
+            <Label x:Name="welkomLabel" Content="Welkom gebruiker! U bent ingelogd als Administrator" HorizontalAlignment="Left" Margin="394,10,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black" Grid.ColumnSpan="2"/>
+        </Grid>
+        <Grid x:Name="footerGrid" HorizontalAlignment="Left" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Top" Width="743">
+
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="251*"/>
+
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label" Content="Het Terras - 2015"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="270,14,231,13" Width="242" />
+            <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Width="750.962" />
+            <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="750.962" />
+        </Grid>
+        <Button x:Name="nieuwButton" Content="Voeg Mededeling toe" HorizontalAlignment="Left" Margin="18,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="26" Click="nieuwButton_Click"/>
+        <Button x:Name="editButton" Content="Pas Mededeling aan" HorizontalAlignment="Left" Margin="365,22,0,0" VerticalAlignment="Top" Width="146" Height="26" Click="editButton_Click" Grid.Row="1"/>
+        <Label x:Name="mededelingLabel" Content="Mededelingen:" HorizontalAlignment="Left" Margin="13,51,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="18"/>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding  }" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="17,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="248" Width="706" SelectionChanged="dataGrid_SelectionChanged_1">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Auteur" Width="auto" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding }" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Titel" Width="auto" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding }" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Datum" Width="auto" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding }" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Mededeling" Width="*" IsReadOnly="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding }" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="editButton_Copy" Content="Pas Mededeling aan" HorizontalAlignment="Left" Margin="182,20,0,0" VerticalAlignment="Top" Width="146" Height="26" Click="fetchNotes" Grid.Row="1"/>
+
+    </Grid>
+</Window>
