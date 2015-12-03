@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Database;
 using model;
 
+
 namespace Het_Terras
 {
     /// <summary>
@@ -22,9 +23,14 @@ namespace Het_Terras
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<notes> MyList { get; set; }
+        private NoteDB _noteDB = new NoteDB();
+
         public MainWindow()
         {
             InitializeComponent();
+            MyList = _noteDB.fetchNotes();
+            DataContext = this;
         }
 
         private void nieuwButton_Click(object sender, RoutedEventArgs e)
@@ -71,7 +77,7 @@ namespace Het_Terras
 
         private void fetchNotes(object sender, RoutedEventArgs e)
         {
-            new NoteDB().fetchNotes();
+            
         }
     }
 }

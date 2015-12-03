@@ -9,6 +9,8 @@ using Het_Terras; // is this even possible?!
 using model;
 using System.Data;
 using System.Data.SqlClient;
+
+
 // I think so, check 
 namespace Database
 {
@@ -50,6 +52,7 @@ namespace Database
             }
 
             return listOfNotes;
+           
         }
 
 
