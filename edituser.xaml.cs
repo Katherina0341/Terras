@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
+using staffmodel;
+using staffDatabase;
 
 
 namespace Het_Terras
@@ -23,9 +25,20 @@ namespace Het_Terras
     public partial class edituser : Window
     {
         Het_Terras.dbclass dbHelper = new Het_Terras.dbclass();
+        public List<staff> MyList { get; set; }
+        private comboDB _combo = new comboDB();
+
+        public List<staff> MyList1 { get; set; }
+        private staffDB _staffDB = new staffDB();
+
+
         public edituser()
         {
+            
+            MyList = _combo.fetchStaff();
+            DataContext = this;          
             InitializeComponent();
+
         }
 
         private void dashboardButton_Click(object sender, RoutedEventArgs e)
@@ -56,20 +69,12 @@ namespace Het_Terras
 
         private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-
+            MyList1 = _staffDB.fetchStaff();
+            DataContext = this;
         }
 
 
-        public DataTable fillZone()
-        {
-            MySqlConnection myConnection = dbHelper.initiallizeDB();
-            string command = "select firstname from intranet_users";
-            MySqlDataAdapter data = new MySqlDataAdapter(command, myConnection);
-            DataTable dt = new DataTable("data");
-            data.Fill(dt);
-            return dt;
-
-        }
+    
 
 
 

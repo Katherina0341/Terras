@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="combo.cs" />
     <Compile Include="edituser.xaml.cs">
       <DependentUpon>edituser.xaml</DependentUpon>
     </Compile>
@@ -77,6 +78,9 @@
     <Compile Include="rooster.xaml.cs">
       <DependentUpon>rooster.xaml</DependentUpon>
     </Compile>
+    <Compile Include="selectStaffDB.cs" />
+    <Compile Include="staff.cs" />
+    <Compile Include="staffDB.cs" />
     <Page Include="edituser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

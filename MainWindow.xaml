@@ -65,42 +65,11 @@
             <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="750.962" />
         </Grid>
         <Button x:Name="nieuwButton" Content="Voeg Mededeling toe" HorizontalAlignment="Left" Margin="18,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="26" Click="nieuwButton_Click"/>
-        <Button x:Name="editButton" Content="Pas Mededeling aan" HorizontalAlignment="Left" Margin="365,22,0,0" VerticalAlignment="Top" Width="146" Height="26" Click="editButton_Click" Grid.Row="1"/>
+        <Button x:Name="editButton" Content="Pas Mededeling aan" HorizontalAlignment="Left" Margin="176,17,0,0" VerticalAlignment="Top" Width="146" Height="26" Click="editButton_Click" Grid.Row="1"/>
         <Label x:Name="mededelingLabel" Content="Mededelingen:" HorizontalAlignment="Left" Margin="13,51,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="18"/>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding fetchNotes }" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="17,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="248" Width="706" SelectionChanged="dataGrid_SelectionChanged_1">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Auteur" Width="auto" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding listOfNotes }" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Titel" Width="auto" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding listOfNotes }" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Datum" Width="auto" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding listOfNotes }" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Mededeling" Width="*" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding }" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-            </DataGrid.Columns>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding MyList }" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="17,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="248" Width="706" SelectionChanged="dataGrid_SelectionChanged_1">
+           
         </DataGrid>
-        <Button x:Name="editButton_Copy" Content="Pas Mededeling aan" HorizontalAlignment="Left" Margin="182,20,0,0" VerticalAlignment="Top" Width="146" Height="26" Click="fetchNotes" Grid.Row="1"/>
 
     </Grid>
 </Window>

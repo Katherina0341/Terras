@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 
+
 namespace Het_Terras
 {
     /// <summary>
@@ -26,50 +27,46 @@ namespace Het_Terras
             InitializeComponent();
         }
 
+       
+
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
         }
 
-        private void saveButton_Click(object sender, RoutedEventArgs e)
+        private void saveButton_Click(object sender, RoutedEventArgs e)             
         {
+            RichTextBox mededelingRichTextBox = new RichTextBox();
+            // Create a FlowDocument to contain content for the RichTextBox.
+            FlowDocument myFlowDoc = new FlowDocument();
+            // Add initial content to the RichTextBox.
+            mededelingRichTextBox.Document = myFlowDoc;
+            // Let's pretend the RichTextBox gets content magically ... 
+            TextRange textRange = new TextRange(
+              // TextPointer to the start of content in the RichTextBox.
+              mededelingRichTextBox.Document.ContentStart,
+              // TextPointer to the end of content in the RichTextBox.
+              mededelingRichTextBox.Document.ContentEnd
+            );
+         
+
+
+            // The Text property on a TextRange object returns a string
+            // representing the plain text content of the TextRange.
+
+
             MySqlConnection myConnection = dbHelper.initiallizeDB();
-            String query = "INSERT INTO terras_mededelingen (author, title, text) VALUES ('" + auteurTextBox.Text + "','" + titelTextBox.Text + "', '" + mededelingRichTextBox.Document.ContentEnd + "')";
+            String query = "INSERT INTO terras_mededelingen (author, title, text) VALUES ('" + auteurTextBox.Text + "','" + titelTextBox.Text + "', '" + textRange.Text + "')";
             MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
-            //MySqlCommand cmd = new MySqlCommand("select * from terras_mededelingen where korder = @korder", myConnection);
-           // MySqlParameter param = new MySqlParameter();
-           // param.ParameterName = "@korder";
-           // param.Value = kordernrTextBox.Text;
-            //cmd.Parameters.Add(param);
-            
-            //sqlCommand.Connection.Open();
-           // MySqlDataReader reader = cmd.ExecuteReader();
-
-            //if (reader.HasRows)
-            //{
-             //     label2.Text = "Order nummer bestaat al";
-             //   return;
-
-            //}
-          //  else
-         //   {
-          //      reader.Close();
-         //   }
-
-            // opens execute non query 
             int rows_inserted = sqlCommand.ExecuteNonQuery();
-
             if (rows_inserted > 0)
             {
                 confirmLabel.Content = "Mededeling is aangemaakt";
             }
-
             else
             {
                 Console.Write("Oops! Something wrong!");
-
             }
-
         }
     }
 }

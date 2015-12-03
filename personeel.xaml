@@ -66,52 +66,8 @@
         </Grid>
         <Button x:Name="nieuwButton" Content="Voeg Personeel toe" HorizontalAlignment="Left" Margin="18,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="26" Click="nieuwButton_Click"/>
         <Button x:Name="editpersoneelButton" Content="Beheer Personeel" HorizontalAlignment="Left" Margin="180,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="26" Click="editpersoneelButton_Click"/>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding Customers}" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="17,65,0,0" Grid.Row="1" VerticalAlignment="Top" Height="267" Width="706" SelectionChanged="dataGrid_SelectionChanged_1">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Voornaam" Width="auto" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Achternaam" Width="auto" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Telefoon" Width="auto" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Email" Width="auto" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Username" Width="auto" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Brutoloon" Width="auto" IsReadOnly="True">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image Source="{Binding Image}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-            </DataGrid.Columns>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding MyList}" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="17,65,0,0" Grid.Row="1" VerticalAlignment="Top" Height="267" Width="706" SelectionChanged="dataGrid_SelectionChanged_1">
+            
         </DataGrid>
 
 

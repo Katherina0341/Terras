@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using staffmodel;
+using staffDatabase;
 namespace Het_Terras
 {
     /// <summary>
@@ -19,9 +20,14 @@ namespace Het_Terras
     /// </summary>
     public partial class personeel : Window
     {
+        public List<staff> MyList { get; set; }
+        private staffDB _staffDB = new staffDB();
+
         public personeel()
         {
             InitializeComponent();
+            MyList = _staffDB.fetchStaff();
+            DataContext = this;
         }
 
         private void dashboardButton_Click(object sender, RoutedEventArgs e)
