@@ -15,6 +15,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using staffmodel;
 using staffDatabase;
+using Intranet;
 
 
 namespace Het_Terras
@@ -25,12 +26,13 @@ namespace Het_Terras
     public partial class edituser : Window
     {
         Het_Terras.dbclass dbHelper = new Het_Terras.dbclass();
-        public List<staff> MyList { get; set; }
+        public List<staff> MyList { get; set; }  
         private comboDB _combo = new comboDB();
 
         public List<staff> MyList1 { get; set; }
         private staffDB _staffDB = new staffDB();
 
+        public List<IntranetUsers> MynewList { get; set; }
 
         public edituser()
         {
@@ -69,8 +71,6 @@ namespace Het_Terras
 
         private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
-            MyList1 = _staffDB.fetchStaff();
-            DataContext = this;
         }
 
 
@@ -80,7 +80,12 @@ namespace Het_Terras
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
- 
+            var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query! 
+         //debug   label2.Content = ((staff)dataComboBox.SelectedItem).Firstname;
+
+          MySqlConnection myConnection = dbHelper.initiallizeDB();
+          string query = "SELECT * FROM intranet_users WHERE firstname = '"+ staffObj + "'";
+
         }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="edituser.xaml.cs">
       <DependentUpon>edituser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IntranetUsers.cs" />
     <Compile Include="NoteDB.cs" />
     <Compile Include="notes.cs" />
     <Compile Include="personeel.xaml.cs">
