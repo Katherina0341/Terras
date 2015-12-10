@@ -16,7 +16,7 @@ using System.Data;
 using staffmodel;
 using staffDatabase;
 using Intranet;
-
+using Database;
 
 namespace Het_Terras
 {
@@ -33,6 +33,7 @@ namespace Het_Terras
         private staffDB _staffDB = new staffDB();
 
         public List<IntranetUsers> MynewList { get; set; }
+        private IntraDB _querywhere = new IntraDB();
 
         public edituser()
         {
@@ -84,7 +85,7 @@ namespace Het_Terras
          //debug   label2.Content = ((staff)dataComboBox.SelectedItem).Firstname;
 
           MySqlConnection myConnection = dbHelper.initiallizeDB();
-          string query = "SELECT * FROM intranet_users WHERE firstname = '"+ staffObj + "'";
+          string querywhere = "SELECT * FROM intranet_users WHERE firstname = '"+ staffObj + "'";
 
         }
     }

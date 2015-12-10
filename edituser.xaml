@@ -69,7 +69,7 @@
         <ComboBox x:Name="dataComboBox" HorizontalAlignment="Left" Margin="1,50,0,0" Grid.Row="1" VerticalAlignment="Top" Width="129" Grid.Column="1" SelectionChanged="comboBox_SelectionChanged" ItemsSource="{Binding MyList}" DisplayMemberPath="Firstname">
             <!-- <ComboBoxItem Content="test" HorizontalAlignment="Left" Width="127"/> -->
         </ComboBox>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding MyList1  }" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="1.277,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="248" Width="706" SelectionChanged="dataGrid_SelectionChanged_1" Grid.Column="1">
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding MynewList  }" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="1.277,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="248" Width="706" SelectionChanged="dataGrid_SelectionChanged_1" Grid.Column="1">
 
         </DataGrid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="-262,94,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
