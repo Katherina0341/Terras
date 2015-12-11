@@ -33,12 +33,13 @@ namespace Het_Terras
         private staffDB _staffDB = new staffDB();
 
         public List<IntranetUsers> MynewList { get; set; }
-        private IntraDB _querywhere = new IntraDB();
+        private IntraDB _staffObj = new IntraDB();
 
         public edituser()
         {
             
             MyList = _combo.fetchStaff();
+            MynewList = _staffObj.fetchNotes();
             DataContext = this;          
             InitializeComponent();
 
@@ -75,18 +76,20 @@ namespace Het_Terras
         }
 
 
-    
+
+
 
 
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query! 
-         //debug   label2.Content = ((staff)dataComboBox.SelectedItem).Firstname;
+                                                                         //debug label2.Content = ((staff)dataComboBox.SelectedItem).Firstname; 
 
-          MySqlConnection myConnection = dbHelper.initiallizeDB();
-          string querywhere = "SELECT * FROM intranet_users WHERE firstname = '"+ staffObj + "'";
-
+            MySqlConnection myConnection = dbHelper.initiallizeDB();
+            string querywhere = "SELECT * FROM intranet_users WHERE firstname = '" + staffObj + "'";
+            IntraDB db = new IntraDB();
+            db.fetchNotes(querywhere);
         }
     }
 }

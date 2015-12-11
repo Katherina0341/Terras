@@ -18,14 +18,15 @@ namespace Database
     {
                
          Het_Terras.dbclass dbHelper = new Het_Terras.dbclass();
-         public List<IntranetUsers> fetchNotes()
+         public List<IntranetUsers> fetchNotes(querywhere)
         {
             var listOfNotes = new List<IntranetUsers>();
             // Populate this list from the db
             MySqlConnection connection = dbHelper.initiallizeDB();
-         //   string querywhere = "SELECT * FROM intranet_users WHERE firstname = '" + edituser.staffObj + "'";
-            string command = "select * from intranet_users WHERE firstname = ";
-            using (MySqlCommand cmd = new MySqlCommand(command, connection))
+            string querywhere = "SELECT * FROM intranet_users WHERE firstname = '" +  staffObj() + "'";
+            
+           
+            using (MySqlCommand cmd = new MySqlCommand(querywhere, connection))
             {
                 // connection.Open();
                 using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -39,15 +40,15 @@ namespace Database
                             IntranetUsers note = new IntranetUsers();
                             note.ID = reader.GetInt32(reader.GetOrdinal("ID"));
                             note.username = reader.GetString(reader.GetOrdinal("username"));
-                            note.password = reader.GetString(reader.GetOrdinal("text"));
+                            note.password = reader.GetString(reader.GetOrdinal("password"));
                             note.email = reader.GetString(reader.GetOrdinal("email"));
                             note.firstname = reader.GetString(reader.GetOrdinal("firstname"));
                             note.surname = reader.GetString(reader.GetOrdinal("surname"));
-                            note.userRole = reader.GetInt32(reader.GetOrdinal("userRole"));
+                            note.userRole = reader.GetInt32(reader.GetOrdinal("user_role"));
                             note.language = reader.GetInt32(reader.GetOrdinal("language"));
                             note.active = reader.GetInt32(reader.GetOrdinal("active"));
                             note.brutoloon = reader.GetInt32(reader.GetOrdinal("brutoloon"));
-                            note.geboortedatum = reader.GetDateTime(reader.GetOrdinal("geboortedatum"));
+                          //note.geboortedatum = reader.(reader.GetOrdinal("geboortedatum"));
                             note.telefoon = reader.GetString(reader.GetOrdinal("telefoon"));
 
 
