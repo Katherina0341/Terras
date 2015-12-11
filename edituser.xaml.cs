@@ -37,9 +37,9 @@ namespace Het_Terras
 
         public edituser()
         {
-            
+
             MyList = _combo.fetchStaff();
-            MynewList = _staffObj.fetchNotes();
+            MynewList = _staffObj.fetchNotes("SELECT * FROM  intranet_users ");
             DataContext = this;          
             InitializeComponent();
 
@@ -73,6 +73,7 @@ namespace Het_Terras
 
         private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
+
         }
 
 
@@ -85,14 +86,15 @@ namespace Het_Terras
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query! 
-                                                                         //debug   label2.Content = ((staff)dataComboBox.SelectedItem).Firstname;
-
-
+            var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!              
             string querywhere = "SELECT * FROM intranet_users WHERE firstname = '" + staffObj + "'";
             IntraDB db = new IntraDB();
-            List<IntranetUsers> users = db.fetchNotes(querywhere);
-
+            MynewList = db.fetchNotes(querywhere);
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = MynewList;
+            dataGrid.Items.Refresh();
         }
+
+
     }
 }

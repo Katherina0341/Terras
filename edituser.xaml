@@ -73,9 +73,7 @@
 
         </DataGrid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="-262,94,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
-        <Label x:Name="label1" Grid.Column="1" HorizontalAlignment="Left" Margin="188,31,0,0" Grid.Row="1" VerticalAlignment="Top">
-            <Label x:Name="label2" Content="Label"/>
-        </Label>
+        <Label x:Name="label1" Grid.Column="1" HorizontalAlignment="Left" Margin="188,31,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
 
     </Grid>
