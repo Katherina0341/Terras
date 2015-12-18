@@ -19,7 +19,7 @@ using Intranet;
 using Database;
 
 namespace Het_Terras
-{
+{ 
     /// <summary>
     /// Interaction logic for edituser.xaml
     /// </summary>
@@ -50,7 +50,6 @@ namespace Het_Terras
             var dashboard = new MainWindow();
             dashboard.Owner = this;
             dashboard.Show();
-
         }
 
         private void roosterButton_Click_1(object sender, RoutedEventArgs e)

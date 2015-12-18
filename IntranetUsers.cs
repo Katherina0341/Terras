@@ -17,17 +17,19 @@ namespace Intranet
     public class IntranetUsers
     {
         public int ID { get; set; }
+        public string firstname { get; set; }
+        public string surname { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public string email { get; set; }
-        public string firstname { get; set; }
-        public string surname { get; set; }
-        public int userRole { get; set; }
-        public int language { get; set; }
-        public int active { get; set; }
-        public int brutoloon { get; set; }
         public DateTime geboortedatum { get; set; }
         public string telefoon { get; set; }
+        public float brutoloon { get; set; }
+        // public int userRole { get; set; }
+        //   public int language { get; set; }
+        //   public int active { get; set; }
+
+
     }
 
 }

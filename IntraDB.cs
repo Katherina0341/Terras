@@ -17,7 +17,7 @@ namespace Database
 {
     class IntraDB
     {
-
+        
         Het_Terras.dbclass dbHelper = new Het_Terras.dbclass();
         public List<IntranetUsers> fetchNotes(string queryString)
         {
@@ -44,9 +44,9 @@ namespace Database
                             note.email = reader.GetString(reader.GetOrdinal("email"));
                             note.firstname = reader.GetString(reader.GetOrdinal("firstname"));
                             note.surname = reader.GetString(reader.GetOrdinal("surname"));
-                            note.userRole = reader.GetInt32(reader.GetOrdinal("user_role"));
-                            note.language = reader.GetInt32(reader.GetOrdinal("language"));
-                            note.active = reader.GetInt32(reader.GetOrdinal("active"));
+                            //note.userRole = reader.GetInt32(reader.GetOrdinal("user_role"));
+                            //note.language = reader.GetInt32(reader.GetOrdinal("language"));
+                            //note.active = reader.GetInt32(reader.GetOrdinal("active"));
                             note.brutoloon = reader.GetInt32(reader.GetOrdinal("brutoloon"));
                             //note.geboortedatum = reader.GetDateTime(reader.GetOrdinal("geboortedatum"));
                             note.telefoon = reader.GetString(reader.GetOrdinal("telefoon"));
