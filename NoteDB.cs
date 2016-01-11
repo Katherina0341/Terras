@@ -26,6 +26,7 @@ namespace Database
             // wait what? Where do I even start? Alright
             MySqlConnection connection = dbHelper.initiallizeDB();
             string command = "select * from terras_mededelingen";
+
             using (MySqlCommand cmd = new MySqlCommand(command, connection))
             {
                // connection.Open();
@@ -40,7 +41,7 @@ namespace Database
                             notes note = new notes();
                             // To avoid unexpected bugs access columns by name.
                             note.ID = reader.GetInt32(reader.GetOrdinal("ID"));
-                            note.Text = reader.GetString(XamlReader.Parse("Text") as FlowDocument);
+                            note.Text = reader.GetString(reader.GetOrdinal("Text"));
                             // int middleNameIndex = reader.GetOrdinal("MiddleName");
                             //  note.MiddleName = reader.GetString(middleNameIndex);
                             note.Author = reader.GetString(reader.GetOrdinal("Author"));

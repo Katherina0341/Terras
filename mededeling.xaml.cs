@@ -50,18 +50,11 @@ namespace Het_Terras
               mededelingRichTextBox.Document.ContentEnd
             );
          */
-            StringWriter wr = new StringWriter();
-            XamlWriter.Save(mededelingRichTextBox.Document, wr);
-            string xaml = wr.ToString();
-            FlowDocument doc = XamlReader.Parse(xaml) as FlowDocument;
-            //  FlowDocument doc = XamlReader.Parse(xaml) as FlowDocument;
-
-            // The Text property on a TextRange object returns a string
-            // representing the plain text content of the TextRange.
+         
 
 
             MySqlConnection myConnection = dbHelper.initiallizeDB();
-            String query = "INSERT INTO terras_mededelingen (author, title, text) VALUES ('" + auteurTextBox.Text + "','" + titelTextBox.Text + "', '" + xaml + "')";
+            String query = "INSERT INTO terras_mededelingen (author, title, text) VALUES ('" + auteurTextBox.Text + "','" + titelTextBox.Text + "', '" + mededelingTextBox.Text + "')";
             MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
             int rows_inserted = sqlCommand.ExecuteNonQuery();
             if (rows_inserted > 0)
@@ -73,7 +66,7 @@ namespace Het_Terras
                 Console.Write("Oops! Something wrong!");
             }
 
-            testLabel.Content = doc;
+          
         }
     }
 }

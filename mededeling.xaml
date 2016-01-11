@@ -30,17 +30,10 @@
         <Label x:Name="titelLabel" Content="Titel:" HorizontalAlignment="Left" Margin="14,87,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
         <TextBox x:Name="titelTextBox" HorizontalAlignment="Left" Height="23" Margin="0,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <Label x:Name="mededelingLabel" Content="Mededeling:" HorizontalAlignment="Left" Margin="13,148,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
-        <RichTextBox x:Name="mededelingRichTextBox" HorizontalAlignment="Left" Height="213" Margin="0,177,0,0" VerticalAlignment="Top" Width="328" Grid.Column="1">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text=""/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+        <TextBox x:Name="mededelingTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="143" Margin="0,178,0,0" TextWrapping="Wrap" Text="" AcceptsReturn="true" VerticalAlignment="Top" Width="336"/>
         <Button x:Name="saveButton" Content="Opslaan" HorizontalAlignment="Left" Margin="0,407,0,0" VerticalAlignment="Top" Width="75" BorderThickness="1" BorderBrush="Black" Grid.Column="1" Click="saveButton_Click"/>
         <Button x:Name="exitButton" Content="Afsluiten" HorizontalAlignment="Left" Margin="83,407,0,0" VerticalAlignment="Top" Width="75" Click="exitButton_Click" BorderThickness="1" BorderBrush="Black" Grid.Column="1"/>
         <Label x:Name="confirmLabel" Content="" HorizontalAlignment="Left" Margin="13,434,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Label x:Name="testLabel" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="165,40,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>
