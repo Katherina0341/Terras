@@ -37,6 +37,7 @@ namespace Het_Terras
         {
             var form2 = new mededeling();
             form2.Show();
+           // this.Hide();
             
         }
 
@@ -44,7 +45,7 @@ namespace Het_Terras
         {
             var form3 = new emededeling();
             form3.Show();
-            
+            this.Hide();            
         }
 
       
@@ -54,7 +55,7 @@ namespace Het_Terras
             var form6 = new rooster();
             form6.Owner = this;
             form6.Show();
-           // this.Hide();
+            this.Hide();
            // this.Close();
 
         }
@@ -64,8 +65,8 @@ namespace Het_Terras
             var personeel = new personeel();
             personeel.Owner = this;
             personeel.Show();
-            // this.Hide();
-            // this.Close();
+            this.Hide();
+            //this.Close();
         }
 
       
@@ -78,6 +79,11 @@ namespace Het_Terras
         private void fetchNotes(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void dashboardButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

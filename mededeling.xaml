@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Het_Terras"
         mc:Ignorable="d"
-        Title="mededeling toevoegen" Height="509.244" Width="374.789">
+        Title="mededeling toevoegen" Height="509.244" Width="374.789" WindowStyle="ToolWindow" ResizeMode="NoResize">
     <Grid RenderTransformOrigin="0.5,0.5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="19*"/>
@@ -40,6 +40,7 @@
         <Button x:Name="saveButton" Content="Opslaan" HorizontalAlignment="Left" Margin="0,407,0,0" VerticalAlignment="Top" Width="75" BorderThickness="1" BorderBrush="Black" Grid.Column="1" Click="saveButton_Click"/>
         <Button x:Name="exitButton" Content="Afsluiten" HorizontalAlignment="Left" Margin="83,407,0,0" VerticalAlignment="Top" Width="75" Click="exitButton_Click" BorderThickness="1" BorderBrush="Black" Grid.Column="1"/>
         <Label x:Name="confirmLabel" Content="" HorizontalAlignment="Left" Margin="13,434,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="testLabel" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="165,40,0,0" VerticalAlignment="Top"/>
 
 
     </Grid>

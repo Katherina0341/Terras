@@ -35,7 +35,7 @@ namespace Het_Terras
             var dashboard = new MainWindow();
             dashboard.Owner = this;
             dashboard.Show();
-            // this.Hide();
+            this.Hide();
             // this.Close();
 
         }
@@ -45,7 +45,7 @@ namespace Het_Terras
             var form6 = new rooster();
             form6.Owner = this;
             form6.Show();
-            // this.Hide();
+            this.Hide();
             // this.Close();
 
         }
@@ -55,6 +55,7 @@ namespace Het_Terras
             var editpersoneel = new edituser();
             editpersoneel.Owner = this;
             editpersoneel.Show();
+            this.Hide();
         }
 
         private void nieuwButton_Click(object sender, RoutedEventArgs e)
@@ -62,6 +63,7 @@ namespace Het_Terras
             var addpersoneel = new personeelwindow();
             addpersoneel.Owner = this;
             addpersoneel.Show();
+            //this.Hide();
         }
 
         private void roosterButton_Click_1(object sender, RoutedEventArgs e)

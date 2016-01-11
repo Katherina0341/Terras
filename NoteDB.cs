@@ -9,6 +9,7 @@ using Het_Terras; // is this even possible?!
 using model;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Markup;
 
 
 // I think so, check 
@@ -39,7 +40,7 @@ namespace Database
                             notes note = new notes();
                             // To avoid unexpected bugs access columns by name.
                             note.ID = reader.GetInt32(reader.GetOrdinal("ID"));
-                            note.Text = reader.GetString(reader.GetOrdinal("text"));
+                            note.Text = reader.GetString(XamlReader.Parse("Text") as FlowDocument);
                             // int middleNameIndex = reader.GetOrdinal("MiddleName");
                             //  note.MiddleName = reader.GetString(middleNameIndex);
                             note.Author = reader.GetString(reader.GetOrdinal("Author"));
@@ -49,7 +50,7 @@ namespace Database
                         }
                     }
                 }
-            }
+            }   
 
             return listOfNotes;
            

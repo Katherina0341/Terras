@@ -29,7 +29,7 @@ namespace Het_Terras
             var dashboard = new MainWindow();
             dashboard.Owner = this;
             dashboard.Show();
-           // this.Hide();
+            this.Hide();
            // this.Close();
 
         }
@@ -39,7 +39,7 @@ namespace Het_Terras
             var form6 = new rooster();
             form6.Owner = this;
             form6.Show();
-            // this.Hide();
+            this.Hide();
             // this.Close();
 
         }
@@ -49,7 +49,7 @@ namespace Het_Terras
             var personeel = new personeel();
             personeel.Owner = this;
             personeel.Show();
-            // this.Hide();
+             this.Hide();
             // this.Close();
         }
 
@@ -63,7 +63,7 @@ namespace Het_Terras
             var personeel = new personeel();
             personeel.Owner = this;
             personeel.Show();
-            // this.Hide();
+             this.Hide();
             // this.Close();
         }
     }

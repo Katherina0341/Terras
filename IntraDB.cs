@@ -51,8 +51,6 @@ namespace Database
                             //note.geboortedatum = reader.GetDateTime(reader.GetOrdinal("geboortedatum"));
                             note.telefoon = reader.GetString(reader.GetOrdinal("telefoon"));
 
-
-
                             listOfNotes.Add(note);
                         }
                     }

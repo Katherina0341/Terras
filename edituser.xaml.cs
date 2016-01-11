@@ -50,6 +50,7 @@ namespace Het_Terras
             var dashboard = new MainWindow();
             dashboard.Owner = this;
             dashboard.Show();
+            this.Hide();
         }
 
         private void roosterButton_Click_1(object sender, RoutedEventArgs e)
@@ -57,7 +58,7 @@ namespace Het_Terras
             var form6 = new rooster();
             form6.Owner = this;
             form6.Show();
-            // this.Hide();
+             this.Hide();
             // this.Close();
         }
 
@@ -66,21 +67,20 @@ namespace Het_Terras
             var personeel = new personeel();
             personeel.Owner = this;
             personeel.Show();
-            // this.Hide();
+            this.Hide();
             // this.Close();
         }
+
+        private void quitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
 
         private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
         }
-
-
-
-
-
-
-
 
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -92,8 +92,23 @@ namespace Het_Terras
             dataGrid.ItemsSource = null;
             dataGrid.ItemsSource = MynewList;
             dataGrid.Items.Refresh();
+
         }
 
 
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query! 
+            testingLabel.Content = staffObj;
+
+
+            /*
+            UPDATE intranet_users SET .... WHERE .... 
+
+            UPDATE table_name
+            SET column1=value1,column2=value2,...
+            WHERE some_column=some_value;
+*/
+        }
     }
 }

@@ -23,5 +23,31 @@ namespace Het_Terras
         {
             InitializeComponent();
         }
+        private void dashboardButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dashboard = new MainWindow();
+            dashboard.Owner = this;
+            dashboard.Show();
+            this.Hide();
+        }
+
+        private void roosterButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            var form6 = new rooster();
+            form6.Owner = this;
+            form6.Show();
+            this.Hide();
+            // this.Close();
+        }
+
+        private void personeelButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            var personeel = new personeel();
+            personeel.Owner = this;
+            personeel.Show();
+            this.Hide();
+            // this.Close();
+        }
+
     }
 }

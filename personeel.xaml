@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Het_Terras"
         mc:Ignorable="d"
-          Title="Het Terras - Personeel" WindowStartupLocation="CenterOwner" Height="546.154" Width="750.962" FontWeight="Bold" WindowStyle="ToolWindow" UseLayoutRounding="False" >
+        Title="Het Terras - Personeel" WindowStartupLocation="CenterOwner" Height="546.154" Width="750.962" FontWeight="Bold" WindowState="Maximized" UseLayoutRounding="False">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
             <GradientStop Color="#FF707070" Offset="1"/>
@@ -26,32 +26,19 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="263*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="navGrid" HorizontalAlignment="Center" Height="90" Margin="0,-89,0,0" VerticalAlignment="Top" Width="743">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="690*"/>
-                <ColumnDefinition Width="53*"/>
+        <Grid x:Name="navGrid" Height="90" Margin="0,-89,0,0" VerticalAlignment="Top">
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+            </Grid.Background>
 
-            </Grid.ColumnDefinitions>
-            <Grid HorizontalAlignment="Left" Width="743" OpacityMask="#FFFF5E5E" Opacity="0.995" Margin="0,1,0,-1" Grid.ColumnSpan="2" >
-                <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="751" Grid.ColumnSpan="3" Margin="0,0,-8,0" />
-                <Grid.Background>
-                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
-                </Grid.Background>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0*"/>
-                    <ColumnDefinition Width="304*"/>
-                    <ColumnDefinition Width="439*"/>
 
-                </Grid.ColumnDefinitions>
 
-            </Grid>
             <Button x:Name="dashboardButton" Content="Dashboard" HorizontalAlignment="Left" Margin="19,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="dashboardButton_Click"/>
-            <Button x:Name="roosterButton" Content="Roosters" HorizontalAlignment="Left" Margin="108,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="roosterButton_Click_1"/>
+            <Button x:Name="roosterButton" Content="Roosters" HorizontalAlignment="Left" Margin="108,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="roosterButton_Click"/>
             <Button x:Name="personeelButton" Content="Personeel" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black"/>
-            <Button x:Name="uitlogButton" Content="Uitloggen" HorizontalAlignment="Left" Margin="288,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black"/>
-            <Label x:Name="welkomLabel" Content="Welkom gebruiker! U bent ingelogd als Administrator" HorizontalAlignment="Left" Margin="394,10,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black" Grid.ColumnSpan="2"/>
+            <Label x:Name="welkomLabel" Content="Welkom gebruiker! U bent ingelogd als Administrator" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black"/>
         </Grid>
-        <Grid x:Name="footerGrid" HorizontalAlignment="Left" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Top" Width="743">
+        <Grid x:Name="footerGrid" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Top">
 
             <Grid.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
@@ -61,13 +48,13 @@
 
             </Grid.ColumnDefinitions>
             <Label x:Name="label" Content="Het Terras - 2015"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="270,14,231,13" Width="242" />
-            <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Width="750.962" />
-            <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="750.962" />
+            <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Width="2000" />
+            <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="2000" />
         </Grid>
         <Button x:Name="nieuwButton" Content="Voeg Personeel toe" HorizontalAlignment="Left" Margin="18,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="26" Click="nieuwButton_Click"/>
         <Button x:Name="editpersoneelButton" Content="Beheer Personeel" HorizontalAlignment="Left" Margin="180,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="26" Click="editpersoneelButton_Click"/>
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding MyList}" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="17,65,0,0" Grid.Row="1" VerticalAlignment="Top" Height="267" Width="706" SelectionChanged="dataGrid_SelectionChanged_1">
-            
+
         </DataGrid>
 
 
