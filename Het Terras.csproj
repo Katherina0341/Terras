@@ -63,13 +63,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="addDataWindow.xaml.cs">
+      <DependentUpon>addDataWindow.XAML</DependentUpon>
+    </Compile>
     <Compile Include="combo.cs" />
+    <Compile Include="combomededeling.cs" />
+    <Compile Include="editDataWindow.xaml.cs">
+      <DependentUpon>editDataWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="edituser.xaml.cs">
       <DependentUpon>edituser.xaml</DependentUpon>
     </Compile>
     <Compile Include="IntraDB.cs" />
     <Compile Include="IntranetUsers.cs" />
+    <Compile Include="mededelDB.cs" />
+    <Compile Include="newstaffcs.cs" />
+    <Compile Include="newstaffDBcs.cs" />
     <Compile Include="NoteDB.cs" />
+    <Compile Include="notemededeling.cs" />
     <Compile Include="notes.cs" />
     <Compile Include="personeel.xaml.cs">
       <DependentUpon>personeel.xaml</DependentUpon>
@@ -83,6 +94,14 @@
     <Compile Include="selectStaffDB.cs" />
     <Compile Include="staff.cs" />
     <Compile Include="staffDB.cs" />
+    <Page Include="addDataWindow.XAML">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="editDataWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="edituser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

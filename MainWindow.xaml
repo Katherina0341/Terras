@@ -36,9 +36,11 @@
             <Button x:Name="dashboardButton" Content="Dashboard" HorizontalAlignment="Left" Margin="19,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black"/>
             <Button x:Name="roosterButton" Content="Roosters" HorizontalAlignment="Left" Margin="108,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="roosterButton_Click"/>
             <Button x:Name="personeelButton" Content="Personeel" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="personeelButton_Click"/>
+            <Button x:Name="quitButton" Content="Quit" HorizontalAlignment="Left" Margin="285,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="quitButton_Click"/>
+
             <Label x:Name="welkomLabel" Content="Welkom gebruiker! U bent ingelogd als Administrator" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black"/>
         </Grid>
-        <Grid x:Name="footerGrid" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Top">
+        <Grid x:Name="footerGrid" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Bottom">
 
             <Grid.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
@@ -54,7 +56,9 @@
         <Button x:Name="nieuwButton" Content="Voeg Mededeling toe" HorizontalAlignment="Left" Margin="18,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="26" Click="nieuwButton_Click"/>
         <Button x:Name="editButton" Content="Pas Mededeling aan" HorizontalAlignment="Left" Margin="176,17,0,0" VerticalAlignment="Top" Width="146" Height="26" Click="editButton_Click" Grid.Row="1"/>
         <Label x:Name="mededelingLabel" Content="Mededelingen:" HorizontalAlignment="Left" Margin="13,51,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="18"/>
-        <DataGrid x:Name="dataGrid" ItemsSource="{Binding MyList }" AutoGenerateColumns="True" Margin="10,84,10,0" Grid.Row="1" VerticalAlignment="Top" IsReadOnly="True" Height="auto" SelectionChanged="dataGrid_SelectionChanged_1" Width="auto"/>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding MyList }" ColumnWidth="*" CanUserAddRows="False" CanUserResizeColumns="False" AutoGenerateColumns="True" Margin="10,84,10,0" Grid.Row="1" VerticalAlignment="Top" IsReadOnly="True" Height="auto" SelectionChanged="dataGrid_SelectionChanged_1" Width="auto"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="-276,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+
 
     </Grid>
 </Window>

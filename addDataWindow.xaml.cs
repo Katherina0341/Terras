@@ -11,27 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using staffmodel;
-using staffDatabase;
-using Intranet;
-using Database;
-
 
 namespace Het_Terras
 {
     /// <summary>
-    /// Interaction logic for Rooster.xaml
+    /// Interaction logic for addDataWindow.xaml
     /// </summary>
-    public partial class rooster : Window
+    public partial class addDataWindow : Window
     {
-        public List<staff> MyList { get; set; }
-        private newstaffDBcs _staffDB = new newstaffDBcs();
-
-        public rooster()
+        public addDataWindow()
         {
             InitializeComponent();
-            MyList = _staffDB.fetchStaff();
-            DataContext = this;
         }
 
         private void dashboardButton_Click(object sender, RoutedEventArgs e)
@@ -40,7 +30,7 @@ namespace Het_Terras
             dashboard.Owner = this;
             dashboard.Show();
             this.Hide();
-           // this.Close();
+            // this.Close();
 
         }
 
@@ -59,13 +49,17 @@ namespace Het_Terras
             var personeel = new personeel();
             personeel.Owner = this;
             personeel.Show();
-             this.Hide();
+            this.Hide();
             // this.Close();
         }
 
         private void roosterButton_Click_1(object sender, RoutedEventArgs e)
         {
-
+            var rooster = new rooster();
+            rooster.Owner = this;
+            rooster.Show();
+            this.Hide();
+            // this.Close();
         }
 
         private void personeelButton_Click_1(object sender, RoutedEventArgs e)
@@ -73,30 +67,9 @@ namespace Het_Terras
             var personeel = new personeel();
             personeel.Owner = this;
             personeel.Show();
-             this.Hide();
+            this.Hide();
             // this.Close();
         }
 
-        private void addDataButton_Click(object sender, RoutedEventArgs e)
-        {
-            var datawindow = new addDataWindow();
-            datawindow.Owner = this;
-            datawindow.Show();
-            this.Hide();
-        }
-
-        private void editDataButton_Click(object sender, RoutedEventArgs e)
-        {
-            var editwindow = new editDataWindow();
-            editwindow.Owner = this;
-            editwindow.Show();
-            this.Hide();
-        }
-
-        private void quitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
     }
-  }
-
+}

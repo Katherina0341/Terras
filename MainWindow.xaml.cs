@@ -85,5 +85,10 @@ namespace Het_Terras
         {
 
         }
+
+        private void quitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

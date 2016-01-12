@@ -11,6 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Intranet;
+using database;
+using authorDatabase;
+using authormodel;
+using MySql.Data.MySqlClient;
 
 namespace Het_Terras
 {
@@ -19,10 +24,60 @@ namespace Het_Terras
     /// </summary>
     public partial class emededeling : Window
     {
+        Het_Terras.dbclass dbHelper = new Het_Terras.dbclass();
+        public List<notemededeling> NewCombo { get; set; }
+        private combomededeling _combomededeling = new combomededeling();
+
+        public List<notemededeling> LoadList { get; set; }
+        private mededelDB _staffObj = new mededelDB();
+
         public emededeling()
         {
+            NewCombo = _combomededeling.fetchAuthor();
+          //  LoadList = _staffObj.fetchingstuff("SELECT * FROM  terras_mededelingen");
+            DataContext = this;
             InitializeComponent();
         }
+
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            MySqlConnection myConnection = dbHelper.initiallizeDB();
+            var staffObj = ((notemededeling)dataComboBox.SelectedItem).title; // Here I take the value's name into a variable will need this for my query!           
+            foreach (var item in LoadList)
+            {
+                // Update each user individually
+                var query = $"UPDATE terras_mededelingen SET title = '{item.title}', author = '{item.author}', text = '{item.text}' WHERE ID = '{item.ID}'";
+                // execute it...
+                MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
+                int rows_inserted = sqlCommand.ExecuteNonQuery();
+                if (rows_inserted > 0)
+                {
+                    Console.Write("Saved");
+                }
+                else
+                {
+                    Console.Write("Oops! Something wrong!");
+                }
+                //db.Execute(query);
+            }
+
+        }
+
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var staffObj = ((notemededeling)dataComboBox.SelectedItem).title; // Here I take the value's name into a variable will need this for my query!              
+            string querywhere = "SELECT * FROM terras_mededelingen WHERE title = '" + staffObj + "'";
+            mededelDB db = new mededelDB();
+            LoadList = db.fetchingstuff(querywhere);
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = LoadList;
+            dataGrid.Items.Refresh();
+        }
+
+
+
+
         private void dashboardButton_Click(object sender, RoutedEventArgs e)
         {
             var dashboard = new MainWindow();
@@ -49,5 +104,17 @@ namespace Het_Terras
             // this.Close();
         }
 
+        private void quitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+
+     
+
+        private void dataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

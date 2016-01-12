@@ -26,3 +26,7 @@ C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\ob
 C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\personeelwindow.baml
 C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\edituser.g.cs
 C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\edituser.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\addDataWindow.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\addDataWindow.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\editDataWindow.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\editDataWindow.baml

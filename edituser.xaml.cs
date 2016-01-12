@@ -29,9 +29,6 @@ namespace Het_Terras
         public List<staff> MyList { get; set; }  
         private comboDB _combo = new comboDB();
 
-        public List<staff> MyList1 { get; set; }
-        private staffDB _staffDB = new staffDB();
-
         public List<IntranetUsers> MynewList { get; set; }
         private IntraDB _staffObj = new IntraDB();
 
@@ -39,9 +36,21 @@ namespace Het_Terras
         {
 
             MyList = _combo.fetchStaff();
-            MynewList = _staffObj.fetchNotes("SELECT * FROM  intranet_users ");
+           // MynewList = _staffObj.fetchNotes("SELECT * FROM  intranet_users ");
             DataContext = this;          
             InitializeComponent();
+
+        }
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!              
+            string querywhere = "SELECT * FROM intranet_users WHERE firstname = '" + staffObj + "'";
+            IntraDB db = new IntraDB();
+            MynewList = db.fetchNotes(querywhere);
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = MynewList;
+            dataGrid.Items.Refresh();
 
         }
 
@@ -83,32 +92,49 @@ namespace Het_Terras
         }
 
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!              
-            string querywhere = "SELECT * FROM intranet_users WHERE firstname = '" + staffObj + "'";
-            IntraDB db = new IntraDB();
-            MynewList = db.fetchNotes(querywhere);
-            dataGrid.ItemsSource = null;
-            dataGrid.ItemsSource = MynewList;
-            dataGrid.Items.Refresh();
-
-        }
+     
 
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query! 
-            testingLabel.Content = staffObj;
+            MySqlConnection myConnection = dbHelper.initiallizeDB();
+            var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!  
+
+            // string works, but I get wrong value in DB         
+            //string inserten = "INSERT INTO intranet_users (firstname) VALUES ('" + String.Join(", ", dataGrid.SelectedCells.Select(cell => ((IntranetUsers)cell.Item).firstname)) + "')";
+            //string inserten = "INSERT INTO intranet_users (firstname) VALUES ('" + dataGrid.SelectedCells.Select(cell => cell.Item) + "')";                       
 
 
-            /*
-            UPDATE intranet_users SET .... WHERE .... 
+            foreach (var item in MynewList)
+            {
+                // Update each user individually
 
-            UPDATE table_name
-            SET column1=value1,column2=value2,...
-            WHERE some_column=some_value;
-*/
+                var query = $"UPDATE intranet_users SET firstname = '{item.firstname}', surname = '{item.surname}', username = '{item.username}', password = '{item.password}', geboortedatum = '{item.geboortedatum}', brutoloon = '{item.brutoloon}', telefoon = '{item.telefoon}', email = '{item.email}' WHERE ID = '{item.ID}' LIMIT 1";
+                // execute it...
+                MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
+                int rows_inserted = sqlCommand.ExecuteNonQuery();
+                if (rows_inserted > 0)
+                {
+                    Console.Write("Saved");
+                }
+                else
+                {
+                    Console.Write("Oops! Something wrong!");
+                }
+                //db.Execute(query);
+            }
+
         }
     }
 }
+
+
+/*
+UPDATE table_name
+SET column1=value1,column2=value2,...
+WHERE some_column=some_value;
+
+    UPDATE intranet_users set (username, password, email, firstname, surname, brutoloon, geboortedatum) WHERE ('" + String.Join(", ", dataGrid.SelectedCells.Select(cell => ((IntranetUsers)cell.Item))) + "')"
+
+
+    */
