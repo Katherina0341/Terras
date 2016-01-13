@@ -53,7 +53,7 @@
             <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Width="2000" />
             <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="2000" />
         </Grid>
-        <DataGrid x:Name="RoosterdataGrid" ItemsSource="{Binding MyList}" AutoGenerateColumns="False" Margin="0,65,0,0" Grid.Row="1" VerticalAlignment="Top" Height="291" CanUserAddRows="False" CanUserResizeRows="False" RowDetailsVisibilityMode="Visible" >
+        <!--  <DataGrid x:Name="RoosterdataGrid" ItemsSource="{Binding MyList}" AutoGenerateColumns="False" Margin="0,65,0,0" Grid.Row="1" VerticalAlignment="Top" Height="291" CanUserAddRows="False" CanUserResizeRows="False" RowDetailsVisibilityMode="Visible" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding MyList}"  Header="Personeel" Width="*" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Maandag" Width="*"></DataGridTextColumn>
@@ -64,9 +64,10 @@
                 <DataGridTextColumn Header="Zaterdag" Width="*"></DataGridTextColumn>
                 <DataGridTextColumn Header="Zondag" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
-        </DataGrid>
-        <Button x:Name="addDataButton" Content="Voeg data toe" HorizontalAlignment="Left" Margin="13,13,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92" Height="27" Click="addDataButton_Click"/>
-        <Button x:Name="editDataButton" Content="Beheer data" HorizontalAlignment="Left" Margin="115,13,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92" Height="27" Click="editDataButton_Click"/>
+        </DataGrid> -->
+        <Button x:Name="addDataButton" Content="Voeg data toe" HorizontalAlignment="Left" Margin="113,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92" Height="27" Click="addDataButton_Click"/>
+        <Button x:Name="editDataButton" Content="Beheer data" HorizontalAlignment="Left" Margin="211,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92" Height="27" Click="editDataButton_Click"/>
+        <Button x:Name="klokButton" Content="Inklokken" HorizontalAlignment="Left" Margin="14,14,0,0" Grid.Row="1" Width="92" Click="klokButton_Click" Height="27" VerticalAlignment="Top"/>
 
 
 

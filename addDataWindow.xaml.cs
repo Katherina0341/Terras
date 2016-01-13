@@ -11,6 +11,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using staffmodel;
+using staffDatabase;
+using Intranet;
+using Database;
+using MySql.Data.MySqlClient;
 
 namespace Het_Terras
 {
@@ -19,10 +24,91 @@ namespace Het_Terras
     /// </summary>
     public partial class addDataWindow : Window
     {
+        Het_Terras.dbclass dbHelper = new Het_Terras.dbclass();
+        public List<staff> MyList { get; set; }
+        private comboDB _combo = new comboDB();
+
         public addDataWindow()
         {
-            InitializeComponent();
+            MyList = _combo.fetchStaff();
+            DataContext = this;
+            InitializeComponent();         
         }
+
+        private void activiteitButton_Click(object sender, RoutedEventArgs e)
+        {
+            var test = myCalendar.SelectedDate.Value.Date.ToShortDateString();
+            var beginplus = beginUurCombo.Text + ':' + beginMinuutCombo.Text;
+            var eindplus = eindUurCombo.Text + ':' + eindMinuutCombo.Text;
+
+            if(omschrijvingTextBox.Text == "Omschrijving")
+            {
+                omschrijvingTextBox.Text = "";
+            }
+
+            if ((string.IsNullOrEmpty(comboBox.Text)) && (string.IsNullOrEmpty(beginplus) && (string.IsNullOrEmpty(eindplus))))
+            {
+                MessageBox.Show("U dient alle velden in te vullen");
+            }
+
+            else if ((string.IsNullOrEmpty(comboBox.Text)))
+            {
+                MessageBox.Show("U dient een werknemer te selecteren");
+            }
+
+            else if ((string.IsNullOrEmpty(beginUurCombo.Text)))
+            {
+                MessageBox.Show("U dient een begin tijd te selecteren");
+            }
+
+            else if ((string.IsNullOrEmpty(beginMinuutCombo.Text)))
+            {
+                MessageBox.Show("U dient een begin tijd te selecteren");
+            }
+
+            else if ((string.IsNullOrEmpty(eindUurCombo.Text)))
+            {
+                MessageBox.Show("U dient een eind tijd te selecteren");
+            }
+
+            else if ((string.IsNullOrEmpty(eindMinuutCombo.Text)))
+            {
+                MessageBox.Show("U dient een begin tijd te selecteren");
+            }
+
+            else
+            {
+
+
+                MySqlConnection myConnection = dbHelper.initiallizeDB();
+                String query = "INSERT INTO ingeroosterd (firstname, date, begintijd, eindtijd, omschrijving) VALUES ('" + comboBox.Text + "','" + test + "','" + beginplus + "','" + eindplus + "','" + omschrijvingTextBox.Text + "')";
+                MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
+                int rows_inserted = sqlCommand.ExecuteNonQuery();
+                if (rows_inserted > 0)
+                {
+                    Console.Write("Saved");
+                    MessageBox.Show("Activiteit aangemaakt op" + test + " Vanaf " + beginplus + " tot " + eindplus);
+                }
+                else
+                {
+                    Console.Write("Oops! Something wrong!");
+                }
+
+                if (omschrijvingTextBox.Text == "")
+                {
+                    omschrijvingTextBox.Text = "Omschrijving";
+                }
+
+                //Console.Write(plus);
+
+            }
+        }
+
+
+
+
+
+
 
         private void dashboardButton_Click(object sender, RoutedEventArgs e)
         {
@@ -71,5 +157,9 @@ namespace Het_Terras
             // this.Close();
         }
 
+        private void quitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

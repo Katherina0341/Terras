@@ -97,6 +97,14 @@ namespace Het_Terras
         {
             Application.Current.Shutdown();
         }
+
+        private void klokButton_Click(object sender, RoutedEventArgs e)
+        {
+            var klokwindow = new klokwindow();
+            klokwindow.Owner = this;
+            klokwindow.Show();
+           // this.Hide();
+        }
     }
   }
 

@@ -30,3 +30,10 @@ C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\ob
 C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\addDataWindow.baml
 C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\editDataWindow.g.cs
 C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\editDataWindow.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\login.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\login.baml
+C:\Users\Stagiair\Documents\Visual Studio 2015\Projects\Het Terras\Het Terras\obj\Debug\App.baml
+C:\Users\Stagiair\Documents\Visual Studio 2015\Projects\Het Terras\Het Terras\obj\Debug\klokwindow.g.cs
+C:\Users\Stagiair\Documents\Visual Studio 2015\Projects\Het Terras\Het Terras\obj\Debug\klokwindow.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\uitklokwindow.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\uitklokwindow.baml

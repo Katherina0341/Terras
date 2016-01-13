@@ -34,11 +34,13 @@
 
 
             <Button x:Name="dashboardButton" Content="Dashboard" HorizontalAlignment="Left" Margin="19,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="dashboardButton_Click"/>
-            <Button x:Name="roosterButton" Content="Roosters" HorizontalAlignment="Left" Margin="108,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black"/>
+            <Button x:Name="roosterButton" Content="Roosters" HorizontalAlignment="Left" Margin="108,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="roosterButton_Click_1"/>
             <Button x:Name="personeelButton" Content="Personeel" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="personeelButton_Click"/>
+            <Button x:Name="quitButton" Content="Quit" HorizontalAlignment="Left" Margin="285,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="quitButton_Click"/>
+
             <Label x:Name="welkomLabel" Content="Welkom gebruiker! U bent ingelogd als Administrator" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black"/>
         </Grid>
-        <Grid x:Name="footerGrid" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Top" ClipToBounds="True">
+        <Grid x:Name="footerGrid" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Bottom" ClipToBounds="True">
 
             <Grid.Background>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
@@ -51,10 +53,79 @@
             <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Width="2000" />
             <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="2000" />
         </Grid>
-        <Label x:Name="naamLabel" Content="Selecteer Personeel" HorizontalAlignment="Left" Margin="24,17,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="27,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="121" Height="30"/>
-        <DatePicker HorizontalAlignment="Left" Margin="162,40,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="121"/>
+        <Label x:Name="naamLabel" Content="Selecteer Personeel" HorizontalAlignment="Left" Margin="27,34,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="26,63,0,0" Grid.Row="1" VerticalAlignment="Top" Width="121" Height="30"  ItemsSource="{Binding MyList}" DisplayMemberPath="Firstname" />
+        <Calendar Name="myCalendar" HorizontalAlignment="Left" Margin="146,42,0,0" Grid.Row="1" VerticalAlignment="Top" Width="214" Height="180" DisplayDate="2016-01-13"  FirstDayOfWeek="Monday"  />
+        <ComboBox x:Name="beginUurCombo"   HorizontalAlignment="Left" Margin="27,123,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50" Text="">
+            <ComboBoxItem>00</ComboBoxItem>
+            <ComboBoxItem>01</ComboBoxItem>
+            <ComboBoxItem>02</ComboBoxItem>
+            <ComboBoxItem>03</ComboBoxItem>
+            <ComboBoxItem>04</ComboBoxItem>
+            <ComboBoxItem>05</ComboBoxItem>
+            <ComboBoxItem>06</ComboBoxItem>
+            <ComboBoxItem>07</ComboBoxItem>
+            <ComboBoxItem>08</ComboBoxItem>
+            <ComboBoxItem>09</ComboBoxItem>
+            <ComboBoxItem>10</ComboBoxItem>
+            <ComboBoxItem>11</ComboBoxItem>
+            <ComboBoxItem>12</ComboBoxItem>
+            <ComboBoxItem>13</ComboBoxItem>
+            <ComboBoxItem>14</ComboBoxItem>
+            <ComboBoxItem>15</ComboBoxItem>
+            <ComboBoxItem>16</ComboBoxItem>
+            <ComboBoxItem>17</ComboBoxItem>
+            <ComboBoxItem>18</ComboBoxItem>
+            <ComboBoxItem>19</ComboBoxItem>
+            <ComboBoxItem>20</ComboBoxItem>
+            <ComboBoxItem>21</ComboBoxItem>
+            <ComboBoxItem>22</ComboBoxItem>
+            <ComboBoxItem>23</ComboBoxItem>
+        </ComboBox>
 
+        <ComboBox x:Name="beginMinuutCombo"  HorizontalAlignment="Left" Margin="96,124,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50" Text="">
+            <ComboBoxItem>00</ComboBoxItem>
+            <ComboBoxItem>15</ComboBoxItem>
+            <ComboBoxItem>30</ComboBoxItem>
+            <ComboBoxItem>45</ComboBoxItem>
+        </ComboBox>
+        <Label x:Name="label1" Content="Begin Tijdstip:" HorizontalAlignment="Left" Margin="26,96,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
+
+        <Label x:Name="label1_Copy" Content="Eind Tijdstip:" HorizontalAlignment="Left" Margin="26,148,0,0" Grid.Row="1" VerticalAlignment="Top" Width="118"/>
+        <ComboBox x:Name="eindUurCombo" HorizontalAlignment="Left" Margin="28,175,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50" Text="">
+            <ComboBoxItem>00</ComboBoxItem>
+            <ComboBoxItem>01</ComboBoxItem>
+            <ComboBoxItem>02</ComboBoxItem>
+            <ComboBoxItem>03</ComboBoxItem>
+            <ComboBoxItem>04</ComboBoxItem>
+            <ComboBoxItem>05</ComboBoxItem>
+            <ComboBoxItem>06</ComboBoxItem>
+            <ComboBoxItem>07</ComboBoxItem>
+            <ComboBoxItem>08</ComboBoxItem>
+            <ComboBoxItem>09</ComboBoxItem>
+            <ComboBoxItem>10</ComboBoxItem>
+            <ComboBoxItem>11</ComboBoxItem>
+            <ComboBoxItem>12</ComboBoxItem>
+            <ComboBoxItem>13</ComboBoxItem>
+            <ComboBoxItem>14</ComboBoxItem>
+            <ComboBoxItem>15</ComboBoxItem>
+            <ComboBoxItem>16</ComboBoxItem>
+            <ComboBoxItem>17</ComboBoxItem>
+            <ComboBoxItem>18</ComboBoxItem>
+            <ComboBoxItem>19</ComboBoxItem>
+            <ComboBoxItem>20</ComboBoxItem>
+            <ComboBoxItem>21</ComboBoxItem>
+            <ComboBoxItem>22</ComboBoxItem>
+            <ComboBoxItem>23</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="eindMinuutCombo"  HorizontalAlignment="Left" Margin="97,176,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50" Text="" >
+            <ComboBoxItem>00</ComboBoxItem>
+            <ComboBoxItem>15</ComboBoxItem>
+            <ComboBoxItem>30</ComboBoxItem>
+            <ComboBoxItem>45</ComboBoxItem>
+        </ComboBox>
+        <Button x:Name="activiteitButton" Content="Maak activiteit aan" HorizontalAlignment="Left" Margin="28,321,0,0" Grid.Row="1" VerticalAlignment="Top" Width="119" Height="33" Click="activiteitButton_Click" IsDefault="True"/>
+        <TextBox x:Name="omschrijvingTextBox" HorizontalAlignment="Left" Height="104" Margin="27,209,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Omschrijving" VerticalAlignment="Top" Width="123"/>
 
 
     </Grid>

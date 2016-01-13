@@ -76,6 +76,12 @@
     </Compile>
     <Compile Include="IntraDB.cs" />
     <Compile Include="IntranetUsers.cs" />
+    <Compile Include="klokwindow.xaml.cs">
+      <DependentUpon>klokwindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="login.xaml.cs">
+      <DependentUpon>login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="mededelDB.cs" />
     <Compile Include="newstaffcs.cs" />
     <Compile Include="newstaffDBcs.cs" />
@@ -94,6 +100,9 @@
     <Compile Include="selectStaffDB.cs" />
     <Compile Include="staff.cs" />
     <Compile Include="staffDB.cs" />
+    <Compile Include="uitklokwindow.xaml.cs">
+      <DependentUpon>uitklokwindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="addDataWindow.XAML">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +116,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="emededeling.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="klokwindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="rooster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="uitklokwindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
