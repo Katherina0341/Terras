@@ -100,11 +100,7 @@ namespace Het_Terras
             MySqlConnection myConnection = dbHelper.initiallizeDB();
             var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!  
 
-            // string works, but I get wrong value in DB         
-            //string inserten = "INSERT INTO intranet_users (firstname) VALUES ('" + String.Join(", ", dataGrid.SelectedCells.Select(cell => ((IntranetUsers)cell.Item).firstname)) + "')";
-            //string inserten = "INSERT INTO intranet_users (firstname) VALUES ('" + dataGrid.SelectedCells.Select(cell => cell.Item) + "')";                       
-
-
+          
             foreach (var item in MynewList)
             {
                 // Update each user individually
@@ -127,14 +123,3 @@ namespace Het_Terras
         }
     }
 }
-
-
-/*
-UPDATE table_name
-SET column1=value1,column2=value2,...
-WHERE some_column=some_value;
-
-    UPDATE intranet_users set (username, password, email, firstname, surname, brutoloon, geboortedatum) WHERE ('" + String.Join(", ", dataGrid.SelectedCells.Select(cell => ((IntranetUsers)cell.Item))) + "')"
-
-
-    */

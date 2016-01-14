@@ -63,6 +63,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="activityDB.cs" />
+    <Compile Include="activityUsers.cs" />
     <Compile Include="addDataWindow.xaml.cs">
       <DependentUpon>addDataWindow.XAML</DependentUpon>
     </Compile>

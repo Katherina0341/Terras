@@ -35,13 +35,48 @@ namespace Het_Terras
             InitializeComponent();         
         }
 
-        private void activiteitButton_Click(object sender, RoutedEventArgs e)
+       public void activiteitButton_Click(object sender, RoutedEventArgs e)
         {
             var test = myCalendar.SelectedDate.Value.Date.ToShortDateString();
             var beginplus = beginUurCombo.Text + ':' + beginMinuutCombo.Text;
             var eindplus = eindUurCombo.Text + ':' + eindMinuutCombo.Text;
+            // Start converting everything to int! 
+            var beginuur = Convert.ToInt32(beginUurCombo.Text);
+            var beginmin = Convert.ToInt32(beginMinuutCombo.Text);
+            var einduur = Convert.ToInt32(eindUurCombo.Text);
+            var eindminuut = Convert.ToInt32(eindMinuutCombo.Text);
+            // those are now integers, now I want the hours * 60 I want the minutes.
+            int beginuurnaarminuut = beginuur * 60;
+            int einduurnaarminuut = einduur * 60;
+            // we have them calculated to minutes now, now I add the rest of the minutes with them then we /60 to get both values to hours again
+            int beginuitgerekend = beginuurnaarminuut + beginmin;
+            int einduitgerekend = einduurnaarminuut + eindminuut;
+            // Gay doen, moeten nu pas delen denk ik
+            int begingedeeld = beginuitgerekend / 60;
+            int eindgedeeld = einduitgerekend / 60;
+            // We Calculate how many hours the employee has worked:
+            int x = eindgedeeld - begingedeeld;
+            Console.Write(x);
+            // nu de pauzes verekenen: 
+            double pauze = 0;
+            if (beginuur == 8 && einduur == 17)
+            {
+                pauze = 0.30;                
+            }
+            else if (beginuur >= 12 && einduur <= 15)
+            {
+                pauze = 0;
+            }
+            else if (beginuur <= 8 && einduur < 12)
+            {
+                pauze = 0;
+            }
 
-            if(omschrijvingTextBox.Text == "Omschrijving")
+            
+
+                  
+
+            if (omschrijvingTextBox.Text == "Omschrijving")
             {
                 omschrijvingTextBox.Text = "";
             }
@@ -81,7 +116,7 @@ namespace Het_Terras
 
 
                 MySqlConnection myConnection = dbHelper.initiallizeDB();
-                String query = "INSERT INTO ingeroosterd (firstname, date, begintijd, eindtijd, omschrijving) VALUES ('" + comboBox.Text + "','" + test + "','" + beginplus + "','" + eindplus + "','" + omschrijvingTextBox.Text + "')";
+                String query = "INSERT INTO ingeroosterd (firstname, date, begintijd, eindtijd, omschrijving, totale_werkuren, pauze) VALUES ('" + comboBox.Text + "','" + test + "','" + beginplus + "','" + eindplus + "','" + omschrijvingTextBox.Text + "','" +x+"','" +pauze+ "')";
                 MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
                 int rows_inserted = sqlCommand.ExecuteNonQuery();
                 if (rows_inserted > 0)

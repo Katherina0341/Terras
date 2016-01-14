@@ -105,6 +105,14 @@ namespace Het_Terras
             klokwindow.Show();
            // this.Hide();
         }
+
+        private void uitklokButton_Click(object sender, RoutedEventArgs e)
+        {
+            var uitklokwindow = new uitklokwindow();
+            uitklokwindow.Owner = this;
+            uitklokwindow.Show();
+            // this.Hide();
+        }
     }
   }
 
