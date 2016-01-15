@@ -76,30 +76,81 @@ namespace Het_Terras
 
         private void datComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selected = dpDateCalendar.SelectedDate;
-           // var test = dpDateCalendar.SelectedDate.Value.Date.ToShortDateString();
-           // var test1 = dpDateCalendar.SelectedDate.Value.Date.ToString();
-            var staffObj = ((staff)datComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!  
-          //  if (test1 == "" && staffObj != "")
-          // {
+                dpDateCalendar.Visibility = Visibility.Visible; 
+                var staffObj = ((staff)datComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!      
                 string querywhere = "SELECT * FROM ingeroosterd WHERE firstname = '" + staffObj + "'";
                 activityDB db = new activityDB();
                 MynewList = db.fetchNotes(querywhere);
                 dataGrid.ItemsSource = null;
                 dataGrid.ItemsSource = MynewList;
+                dataGrid.Items.Refresh();         
+        }
+
+        private void dpdateCalendar_OnSelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var myDay = dpDateCalendar.SelectedDate.Value.Date.ToShortDateString();
+            var staffObj = ((staff)datComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!      
+            string querywhere = "SELECT * FROM ingeroosterd WHERE firstname = '" + staffObj + "' AND date = '" + myDay + "'";
+            activityDB db = new activityDB();
+            MynewList = db.fetchNotes(querywhere);
+            dataGrid.ItemsSource = null;
+            dataGrid.ItemsSource = MynewList;
+            dataGrid.Items.Refresh();
+        }
+        /*
+                private void dateCalender_OnSelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+                {
+                    //    var myDate = dpDateCalendar.SelectedDate.Value.Date.ToShortDateString();    
+                    var mydate1 = dateCalender.SelectedDate.Value.Date.ToShortDateString();
+                    //var mydates = dateCalender.SelectedDates.Count.ToString();
+                    //var mydates = dateCalender.SelectedDates.ToList();
+                    string querywhere = "SELECT * FROM ingeroosterd WHERE date = '" + mydate1 + "'";
+                  //  Console.WriteLine(mydates);
+
+                    activityDB db = new activityDB();
+                    MynewList = db.fetchNotes(querywhere);
+                    dataGrid.ItemsSource = null;
+                    dataGrid.ItemsSource = MynewList;
+                    dataGrid.Items.Refresh();
+                }
+        */
+
+        private void dateCalender_OnSelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var mydates = dateCalender.SelectedDates.ToList();
+
+            foreach (DateTime currDate in dateCalender.SelectedDates)
+            {
+               // System.Diagnostics.Debug.Print(currDate.ToString());
+                var eerste = dateCalender.SelectedDates[0];
+                var tweede = dateCalender.SelectedDates[dateCalender.SelectedDates.Count - 1];
+                // System.Diagnostics.Debug.Print(eerste.ToString());
+                string query = "SELECT * FROM ingeroosterd WHERE date BETWEEN '" + eerste + "' AND '" + tweede +"'";
+                activityDB db = new activityDB();
+                MynewList = db.fetchNotes(query);
+                dataGrid.ItemsSource = null;
+                dataGrid.ItemsSource = MynewList;
                 dataGrid.Items.Refresh();
-           // }
 
-            
 
-    
+            }
+
+
 
         }
+        
+
+
+
+
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
+            
+
+          
             MySqlConnection myConnection = dbHelper.initiallizeDB();
-            var staffObj = ((staff)datComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!  
+         //   var staffObj = ((staff)datComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!  
 
 
             foreach (var item in MynewList)

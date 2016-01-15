@@ -32,5 +32,17 @@ namespace Het_Terras.Properties {
                 return ((string)(this["mysqlstr"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int user_role3 {
+            get {
+                return ((int)(this["user_role3"]));
+            }
+            set {
+                this["user_role3"] = value;
+            }
+        }
     }
 }

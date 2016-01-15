@@ -55,7 +55,7 @@
         </Grid>
         <Label x:Name="naamLabel" Content="Selecteer Personeel" HorizontalAlignment="Left" Margin="27,34,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="26,63,0,0" Grid.Row="1" VerticalAlignment="Top" Width="121" Height="30"  ItemsSource="{Binding MyList}" DisplayMemberPath="Firstname" />
-        <Calendar Name="myCalendar" HorizontalAlignment="Left" Margin="146,42,0,0" Grid.Row="1" VerticalAlignment="Top" Width="214" Height="180" DisplayDate="2016-01-13"  FirstDayOfWeek="Monday"   />
+        <Calendar Name="myCalendar" HorizontalAlignment="Left" Margin="146,42,0,0" Grid.Row="1" VerticalAlignment="Top" Width="214" Height="180" DisplayDate="2016-01-13"  FirstDayOfWeek="Monday" SelectionMode="SingleRange"   />
         <ComboBox x:Name="beginUurCombo"   HorizontalAlignment="Left" Margin="27,123,0,0" Grid.Row="1" VerticalAlignment="Top" Width="50" Text="08">
             <ComboBoxItem>00</ComboBoxItem>
             <ComboBoxItem>01</ComboBoxItem>

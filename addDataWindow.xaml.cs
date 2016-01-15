@@ -46,22 +46,23 @@ namespace Het_Terras
             var einduur = Convert.ToInt32(eindUurCombo.Text);
             var eindminuut = Convert.ToInt32(eindMinuutCombo.Text);
             // those are now integers, now I want the hours * 60 I want the minutes.
-            int beginuurnaarminuut = beginuur * 60;
-            int einduurnaarminuut = einduur * 60;
+            double beginuurnaarminuut = beginuur * 60;
+            double einduurnaarminuut = einduur * 60;
             // we have them calculated to minutes now, now I add the rest of the minutes with them then we /60 to get both values to hours again
-            int beginuitgerekend = beginuurnaarminuut + beginmin;
-            int einduitgerekend = einduurnaarminuut + eindminuut;
+            double beginuitgerekend = beginuurnaarminuut + beginmin;
+            double einduitgerekend = einduurnaarminuut + eindminuut;
             // Gay doen, moeten nu pas delen denk ik
-            int begingedeeld = beginuitgerekend / 60;
-            int eindgedeeld = einduitgerekend / 60;
+            double begingedeeld = beginuitgerekend / 60;
+            double eindgedeeld = einduitgerekend / 60;
             // We Calculate how many hours the employee has worked:
-            int x = eindgedeeld - begingedeeld;
+            // int x = eindgedeeld - begingedeeld;
+            double x = eindgedeeld - begingedeeld; 
             Console.Write(x);
             // nu de pauzes verekenen: 
             double pauze = 0;
-            if (beginuur == 8 && einduur == 17)
+            if (beginuur == 8 && einduur >= 17)
             {
-                pauze = 0.30;                
+                pauze = 0.5;                
             }
             else if (beginuur >= 12 && einduur <= 15)
             {
@@ -72,9 +73,11 @@ namespace Het_Terras
                 pauze = 0;
             }
 
-            
+            //  pauzes verwerkt, nu aftrekken van x 
+            double betaaluren = x - pauze;
 
-                  
+
+
 
             if (omschrijvingTextBox.Text == "Omschrijving")
             {
@@ -116,13 +119,13 @@ namespace Het_Terras
 
 
                 MySqlConnection myConnection = dbHelper.initiallizeDB();
-                String query = "INSERT INTO ingeroosterd (firstname, date, begintijd, eindtijd, omschrijving, totale_werkuren, pauze) VALUES ('" + comboBox.Text + "','" + test + "','" + beginplus + "','" + eindplus + "','" + omschrijvingTextBox.Text + "','" +x+"','" +pauze+ "')";
+                String query = "INSERT INTO ingeroosterd (firstname, date, begintijd, eindtijd, omschrijving, totale_werkuren, pauze, betaalde_uren) VALUES ('" + comboBox.Text + "','" + test + "','" + beginplus + "','" + eindplus + "','" + omschrijvingTextBox.Text + "','" +x+"','" +pauze+ "','" + betaaluren + "')";
                 MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
                 int rows_inserted = sqlCommand.ExecuteNonQuery();
                 if (rows_inserted > 0)
                 {
                     Console.Write("Saved");
-                    MessageBox.Show("Activiteit aangemaakt op" + test + " Vanaf " + beginplus + " tot " + eindplus);
+                    MessageBox.Show("Activiteit aangemaakt op " + test + " Vanaf " + beginplus + " tot " + eindplus);
                 }
                 else
                 {
