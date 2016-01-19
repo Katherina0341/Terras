@@ -35,10 +35,9 @@
 
             <Button x:Name="dashboardButton" Content="Dashboard" HorizontalAlignment="Left" Margin="19,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black"/>
             <Button x:Name="roosterButton" Content="Roosters" HorizontalAlignment="Left" Margin="108,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="roosterButton_Click"/>
-            <Button x:Name="personeelButton" Content="Personeel" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="personeelButton_Click"/>
+            <Button x:Name="personeelButton" Content="Personeel" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="75" Height="33"  BorderBrush="Black" Click="personeelButton_Click" IsEnabled="False"  />
             <Button x:Name="quitButton" Content="Quit" HorizontalAlignment="Left" Margin="285,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="quitButton_Click"/>
-
-            <Label x:Name="welkomLabel" Content="Welkom gebruiker! U bent ingelogd als Administrator" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black"/>
+            <Label x:Name="label1" Content="" HorizontalAlignment="Left" Margin="18,12,0,0" VerticalAlignment="Top"/>
         </Grid>
         <Grid x:Name="footerGrid" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Bottom">
 

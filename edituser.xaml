@@ -61,7 +61,6 @@
         <Label x:Name="label1" Grid.Column="1" HorizontalAlignment="Left" Margin="188,31,0,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Button x:Name="saveButton" Content="Save changes
                 " HorizontalAlignment="Left" Margin="141,49,0,0" Grid.Row="1" VerticalAlignment="Top" Width="87" Height="24" Click="saveButton_Click"/>
-        <Label x:Name="testingLabel" Content="Label" HorizontalAlignment="Left" Margin="318,20,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
 
     </Grid>

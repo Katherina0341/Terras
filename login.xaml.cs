@@ -31,7 +31,7 @@ namespace Het_Terras
             InitializeComponent();
         }
 
-        private bool validate_login(string user, string pass)
+        public bool validate_login(string user, string pass)
         {
             Het_Terras.dbclass dbHelper = new Het_Terras.dbclass();
             MySqlConnection connection = dbHelper.initiallizeDB();
@@ -46,6 +46,7 @@ namespace Het_Terras
             {
                 connection.Close();
                 return true;
+              //  string username = username.ToString();
             }
             else
             {
@@ -54,7 +55,7 @@ namespace Het_Terras
             }
         }
 
-        private void loginButton_Click(object sender, RoutedEventArgs e)
+        public void loginButton_Click(object sender, RoutedEventArgs e)
         {
             var dashboard = new MainWindow();
             dashboard.Owner = this;
@@ -84,9 +85,11 @@ namespace Het_Terras
             bool r = validate_login(user, pass);
             if (r)
             {
-             //   MessageBox.Show("Correct Login Credentials");
-                 dashboard.Show();
-                 this.Hide();
+                Properties.Settings.Default.username = user;
+                Properties.Settings.Default.Save();
+                var MainWindow = new MainWindow();
+                MainWindow.Show();
+                this.Hide();
             }
             else
                 MessageBox.Show("Incorrect Login Credentials");

@@ -15,7 +15,7 @@ using staffmodel;
 using staffDatabase;
 using Intranet;
 using Database;
-
+using System.Globalization;
 
 namespace Het_Terras
 {
@@ -30,9 +30,127 @@ namespace Het_Terras
         public rooster()
         {
             InitializeComponent();
+            testAdmin();
+            currentWeek();
+            GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
+            GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
+            label1.Content = "Maandag: " + GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString() + " En als laatste, Zondag: " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString(); ;
             MyList = _staffDB.fetchStaff();
             DataContext = this;
         }
+
+        private void testAdmin()
+        {
+            if (Properties.Settings.Default.username == "admin")
+            {
+                personeelButton.IsEnabled = true;
+                addDataButton.IsEnabled = true;
+                editDataButton.IsEnabled = true;
+                dataGrid.IsReadOnly = false;
+            }
+
+            else
+            {
+                personeelButton.IsEnabled = false;
+                addDataButton.IsEnabled = false;
+                editDataButton.IsEnabled = false;
+                volgendeButton.IsEnabled = false;
+                vorigButton.IsEnabled = false;
+                dataGrid.IsReadOnly = true;
+                // Remove Rows, CBA making foreach loop // Running outta time:) 
+                dataGrid.Columns[0].Visibility = Visibility.Hidden;
+                dataGrid.Columns[1].Visibility = Visibility.Hidden;
+                dataGrid.Columns[2].Visibility = Visibility.Hidden;
+                dataGrid.Columns[3].Visibility = Visibility.Hidden;
+                dataGrid.Columns[4].Visibility = Visibility.Hidden;
+                dataGrid.Columns[5].Visibility = Visibility.Hidden;
+                dataGrid.Columns[6].Visibility = Visibility.Hidden;
+                dataGrid.Columns[7].Visibility = Visibility.Hidden;
+                dataGrid.Columns[8].Visibility = Visibility.Hidden;
+                dataGrid.Columns[9].Visibility = Visibility.Hidden;
+                dataGrid.Columns[10].Visibility = Visibility.Hidden;
+            }
+        }
+
+        
+        public void currentWeek()
+        {
+            object index = DateTime.Now;
+            int res = 0;
+
+            res = System.Globalization.CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
+               Convert.ToDateTime(index), System.Globalization.CalendarWeekRule.FirstFullWeek, System.Globalization.DateTimeFormatInfo.CurrentInfo.FirstDayOfWeek);
+               weekNummerTextBox.Text = res.ToString();
+
+            int weekNumber = res;
+        }
+
+        private void vorigButton_Click(object sender, RoutedEventArgs e)
+        {
+              var naarInt = Convert.ToInt32(weekNummerTextBox.Text);
+              int toResult = naarInt - 1;
+            // stopt dat gebruiker naar de - weken gaat :P 
+              if(toResult < 1)
+              {
+                 toResult = 1;
+                 MessageBox.Show("U bent al bij week 1!");
+              }
+              weekNummerTextBox.Text = toResult.ToString();
+        }
+
+        private void volgendeButton_Click(object sender, RoutedEventArgs e)
+        {
+            var naarInt = Convert.ToInt32(weekNummerTextBox.Text);
+            int toResult = naarInt + 1;
+            if(toResult > 53)
+            {
+                toResult = 53;
+                MessageBox.Show("U bent al bij week 53");       
+            }
+            weekNummerTextBox.Text = toResult.ToString();            
+        }
+          
+        public static DateTime GetFirstDateOfWeekByWeekNumber(int weekNumber)
+        {
+        var year = DateTime.Today.Year;
+        //var year = 2016;
+        var date = new DateTime(year, 01, 01);
+        var firstDayOfYear = date.DayOfWeek;
+        var result = date.AddDays(weekNumber * 7);
+
+        if (firstDayOfYear == DayOfWeek.Monday)
+            return result.Date;
+        if (firstDayOfYear == DayOfWeek.Tuesday)
+            return result.AddDays(-1).Date;
+        if (firstDayOfYear == DayOfWeek.Wednesday)
+            return result.AddDays(-2).Date;
+        if (firstDayOfYear == DayOfWeek.Thursday)
+            return result.AddDays(-3).Date;
+        if (firstDayOfYear == DayOfWeek.Friday)
+            return result.AddDays(-4).Date;
+        if (firstDayOfYear == DayOfWeek.Saturday)
+            return result.AddDays(-5).Date;
+        return result.AddDays(-6).Date;
+       }
+        
+
+        public static DateTime GetLastDateOfWeekByWeekNumber(int weekNumber)
+        {
+            DateTime ldowDate = GetFirstDateOfWeekByWeekNumber(weekNumber).AddDays(6);
+            return ldowDate;
+        }
+
+        public void weekNummerTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           // currentWeek();
+            GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
+            GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
+            label1.Content = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString() + " En als laatste " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString(); ;
+
+        }
+
+
+
 
         private void dashboardButton_Click(object sender, RoutedEventArgs e)
         {
@@ -113,6 +231,8 @@ namespace Het_Terras
             uitklokwindow.Show();
             // this.Hide();
         }
+
+
     }
   }
 

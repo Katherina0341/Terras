@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using Database;
 using model;
 
-
 namespace Het_Terras
 {
     /// <summary>
@@ -25,12 +24,32 @@ namespace Het_Terras
     {
         public List<notes> MyList { get; set; }
         private NoteDB _noteDB = new NoteDB();
-
+        
         public MainWindow()
         {
+            
             InitializeComponent();
+            testAdmin();
             MyList = _noteDB.fetchNotes();
             DataContext = this;
+            label1.Content = "Welkom " + Properties.Settings.Default.username + " u bent succesvol ingelogd";
+        }
+
+
+        private void testAdmin() {
+           if(Properties.Settings.Default.username == "admin")
+            {
+                personeelButton.IsEnabled = true;
+                nieuwButton.IsEnabled = true;
+                editButton.IsEnabled = true;
+            }
+
+           else
+            {
+                personeelButton.IsEnabled = false;
+                nieuwButton.IsEnabled = false;
+                editButton.IsEnabled = false;
+            }
         }
 
         private void nieuwButton_Click(object sender, RoutedEventArgs e)
@@ -90,5 +109,8 @@ namespace Het_Terras
         {
             Application.Current.Shutdown();
         }
+        
+       
+
     }
 }

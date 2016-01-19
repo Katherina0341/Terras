@@ -35,13 +35,13 @@ namespace Het_Terras.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public int user_role3 {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string username {
             get {
-                return ((int)(this["user_role3"]));
+                return ((string)(this["username"]));
             }
             set {
-                this["user_role3"] = value;
+                this["username"] = value;
             }
         }
     }
