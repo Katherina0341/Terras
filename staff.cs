@@ -17,3 +17,4 @@ namespace staffmodel
         public string Brutoloon { get; set; }
     }
 }
+

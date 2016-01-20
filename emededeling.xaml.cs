@@ -42,25 +42,37 @@ namespace Het_Terras
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             MySqlConnection myConnection = dbHelper.initiallizeDB();
-            var staffObj = ((notemededeling)dataComboBox.SelectedItem).title; // Here I take the value's name into a variable will need this for my query!           
-            foreach (var item in LoadList)
+            if (dataComboBox.Text == "")
             {
-                // Update each user individually
-                var query = $"UPDATE terras_mededelingen SET title = '{item.title}', author = '{item.author}', text = '{item.text}' WHERE ID = '{item.ID}'";
-                // execute it...
-                MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
-                int rows_inserted = sqlCommand.ExecuteNonQuery();
-                if (rows_inserted > 0)
-                {
-                    Console.Write("Saved");
-                }
-                else
-                {
-                    Console.Write("Oops! Something wrong!");
-                }
-                //db.Execute(query);
+                MessageBox.Show("Selecteer Mededeling");
+
             }
 
+            else
+            {
+
+
+                var staffObj = ((notemededeling)dataComboBox.SelectedItem).title; // Here I take the value's name into a variable will need this for my query!           
+
+                foreach (var item in LoadList)
+                {
+                    // Update each user individually
+                    var query = $"UPDATE terras_mededelingen SET title = '{item.title}', author = '{item.author}', text = '{item.text}' WHERE ID = '{item.ID}'";
+                    // execute it...
+                    MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
+                    int rows_inserted = sqlCommand.ExecuteNonQuery();
+                    if (rows_inserted > 0)
+                    {
+                        Console.Write("Saved");
+                    }
+                    else
+                    {
+                        Console.Write("Oops! Something wrong!");
+                    }
+                    //db.Execute(query);
+                }
+
+            }
         }
 
 

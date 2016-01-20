@@ -13,7 +13,7 @@
         <Label x:Name="label" Content="Username:" HorizontalAlignment="Left" Margin="183,67,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy" Content="Password:" HorizontalAlignment="Left" Margin="183,97,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.025,1.096"/>
         <TextBox x:Name="usernameTextBox" HorizontalAlignment="Left" Height="23" Margin="249,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.995,0.43"/>
-        <TextBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="249,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="passwordTextBox" HorizontalAlignment="Left" Height="23" Margin="249,99,0,0"  VerticalAlignment="Top" Width="120"/>
         <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Left" Margin="189,126,0,0" VerticalAlignment="Top" Width="78" Height="28" Click="loginButton_Click" IsDefault="True"/>
         <Image x:Name="image"  HorizontalAlignment="Left" Height="160" Margin="9,14,0,0" VerticalAlignment="Top" Width="162" Source="{DynamicResource ImageSource1}">
             <Image.OpacityMask>

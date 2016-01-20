@@ -62,11 +62,12 @@ namespace Het_Terras
            // dashboard.Show();
            // this.Hide();
             string user = usernameTextBox.Text;
-            string pass = passwordTextBox.Text;
+            string pass = passwordTextBox.Password;
+
 
 
             if (string.IsNullOrEmpty(usernameTextBox.Text) &&
-                 string.IsNullOrEmpty(passwordTextBox.Text))
+                 string.IsNullOrEmpty(passwordTextBox.Password))
             {
                 label3.Content = "U dient beide velden in te vullen";
             }
@@ -76,7 +77,7 @@ namespace Het_Terras
                 label3.Content = "U dient een gebruiksnaam in te vullen";
             }
 
-            else if (string.IsNullOrEmpty(passwordTextBox.Text))
+            else if (string.IsNullOrEmpty(passwordTextBox.Password))
             {
                 label3.Content = "U dient een wachtwoord in te vullen";
             }
@@ -98,7 +99,7 @@ namespace Het_Terras
         private void resetButton_Click(object sender, RoutedEventArgs e)
         {
             usernameTextBox.Text = "";
-            passwordTextBox.Text = "";
+            passwordTextBox.Password = "";
         }
     }
 }

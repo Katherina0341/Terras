@@ -92,34 +92,44 @@ namespace Het_Terras
         }
 
 
-     
+
 
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             MySqlConnection myConnection = dbHelper.initiallizeDB();
-            var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!  
-
-          
-            foreach (var item in MynewList)
+            if (dataComboBox.Text == "")
             {
-                // Update each user individually
-
-                var query = $"UPDATE intranet_users SET firstname = '{item.firstname}', surname = '{item.surname}', username = '{item.username}', password = '{item.password}', geboortedatum = '{item.geboortedatum}', brutoloon = '{item.brutoloon}', telefoon = '{item.telefoon}', email = '{item.email}' WHERE ID = '{item.ID}' LIMIT 1";
-                // execute it...
-                MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
-                int rows_inserted = sqlCommand.ExecuteNonQuery();
-                if (rows_inserted > 0)
-                {
-                    Console.Write("Saved");
-                }
-                else
-                {
-                    Console.Write("Oops! Something wrong!");
-                }
-                //db.Execute(query);
+                MessageBox.Show("Selecteer Personeel");
             }
 
+            else
+            {
+
+
+                var staffObj = ((staff)dataComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!  
+
+
+                foreach (var item in MynewList)
+                {
+                    // Update each user individually
+
+                    var query = $"UPDATE intranet_users SET firstname = '{item.firstname}', surname = '{item.surname}', username = '{item.username}', password = '{item.password}', geboortedatum = '{item.geboortedatum}', brutoloon = '{item.brutoloon}', telefoon = '{item.telefoon}', email = '{item.email}' WHERE ID = '{item.ID}' LIMIT 1";
+                    // execute it...
+                    MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
+                    int rows_inserted = sqlCommand.ExecuteNonQuery();
+                    if (rows_inserted > 0)
+                    {
+                        Console.Write("Saved");
+                    }
+                    else
+                    {
+                        Console.Write("Oops! Something wrong!");
+                    }
+                    //db.Execute(query);
+                }
+
+            }
         }
     }
 }

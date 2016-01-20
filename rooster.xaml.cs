@@ -34,8 +34,12 @@ namespace Het_Terras
             currentWeek();
             GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
             GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
-            label1.Content = "Maandag: " + GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString() + " En als laatste, Zondag: " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString(); ;
-            MyList = _staffDB.fetchStaff();
+            var begin = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
+            var eind = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
+            label1.Content = "Maandag: " + GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString() + " En als laatste, Zondag: " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
+            MyList = _staffDB.fetchStaff();      
+            EachDay(begin, eind);
+            getMyDay(begin, eind);
             DataContext = this;
         }
 
@@ -72,7 +76,7 @@ namespace Het_Terras
             }
         }
 
-        
+        // Get current week function
         public void currentWeek()
         {
             object index = DateTime.Now;
@@ -84,7 +88,9 @@ namespace Het_Terras
 
             int weekNumber = res;
         }
-
+ 
+       
+        // Vorige knop  -1 dus 
         private void vorigButton_Click(object sender, RoutedEventArgs e)
         {
               var naarInt = Convert.ToInt32(weekNummerTextBox.Text);
@@ -98,6 +104,7 @@ namespace Het_Terras
               weekNummerTextBox.Text = toResult.ToString();
         }
 
+        // Volgende knop
         private void volgendeButton_Click(object sender, RoutedEventArgs e)
         {
             var naarInt = Convert.ToInt32(weekNummerTextBox.Text);
@@ -109,7 +116,8 @@ namespace Het_Terras
             }
             weekNummerTextBox.Text = toResult.ToString();            
         }
-          
+
+        // get  first day of weeknumber
         public static DateTime GetFirstDateOfWeekByWeekNumber(int weekNumber)
         {
         var year = DateTime.Today.Year;
@@ -132,21 +140,45 @@ namespace Het_Terras
             return result.AddDays(-5).Date;
         return result.AddDays(-6).Date;
        }
-        
-
-        public static DateTime GetLastDateOfWeekByWeekNumber(int weekNumber)
+       // get last day of weeknumber 
+      public static DateTime GetLastDateOfWeekByWeekNumber(int weekNumber)
         {
-            DateTime ldowDate = GetFirstDateOfWeekByWeekNumber(weekNumber).AddDays(6);
+            DateTime ldowDate = GetFirstDateOfWeekByWeekNumber(weekNumber).AddDays(6);      
             return ldowDate;
         }
+        // Get days between Start & End
+        public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
+        {
+            for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
+                yield return day;     
+        }
+       
+        public void getMyDay(DateTime begin, DateTime eind)
+        {
+            List<DateTime> list = new List<DateTime>();
+            foreach (DateTime days in EachDay(begin, eind))
+            {
+                list.Add(days);
+            }
+            list.ForEach(t =>  Console.WriteLine(t.ToShortDateString()));
 
+            // ToShortDateString(); this:P
+        }
+
+        
+
+
+        // When change weeknumber:
         public void weekNummerTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
            // currentWeek();
             GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
             GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
-            label1.Content = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString() + " En als laatste " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString(); ;
+            var begin123 = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
+            var eind123 = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
 
+            label1.Content = "Maandag: " + GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString() + " En als laatste, Zondag: " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
+            getMyDay(begin123, eind123);
         }
 
 

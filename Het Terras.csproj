@@ -76,6 +76,8 @@
     <Compile Include="edituser.xaml.cs">
       <DependentUpon>edituser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="finalDB.cs" />
+    <Compile Include="finalschedule.cs" />
     <Compile Include="IntraDB.cs" />
     <Compile Include="IntranetUsers.cs" />
     <Compile Include="klokwindow.xaml.cs">
