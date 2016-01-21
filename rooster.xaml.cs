@@ -16,6 +16,7 @@ using staffDatabase;
 using Intranet;
 using Database;
 using System.Globalization;
+using MySql.Data.MySqlClient;
 
 namespace Het_Terras
 {
@@ -24,6 +25,8 @@ namespace Het_Terras
     /// </summary>
     public partial class rooster : Window
     {
+        Het_Terras.dbclass dbHelper = new Het_Terras.dbclass();
+
         public List<staff> MyList { get; set; }
         private newstaffDBcs _staffDB = new newstaffDBcs();
 
@@ -35,11 +38,14 @@ namespace Het_Terras
             GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
             GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
             var begin = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
-            var eind = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
+            var eind = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));                  
             label1.Content = "Maandag: " + GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString() + " En als laatste, Zondag: " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
             MyList = _staffDB.fetchStaff();      
             EachDay(begin, eind);
             getMyDay(begin, eind);
+            var test = TestDateStuff();
+            var test1 = ConvertData(test);
+            this.dataGrid.ItemsSource = test1;
             DataContext = this;
         }
 
@@ -90,7 +96,7 @@ namespace Het_Terras
         }
  
        
-        // Vorige knop  -1 dus 
+        // Vorige knop  -1 dus ||  Previous Week button 
         private void vorigButton_Click(object sender, RoutedEventArgs e)
         {
               var naarInt = Convert.ToInt32(weekNummerTextBox.Text);
@@ -104,7 +110,7 @@ namespace Het_Terras
               weekNummerTextBox.Text = toResult.ToString();
         }
 
-        // Volgende knop
+        // Volgende knop ||| Next Week Button
         private void volgendeButton_Click(object sender, RoutedEventArgs e)
         {
             var naarInt = Convert.ToInt32(weekNummerTextBox.Text);
@@ -162,7 +168,6 @@ namespace Het_Terras
             }
             list.ForEach(t =>  Console.WriteLine(t.ToShortDateString()));
 
-            // ToShortDateString(); this:P
         }
 
         
@@ -176,9 +181,14 @@ namespace Het_Terras
             GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
             var begin123 = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
             var eind123 = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
-
+           // string query = "SELECT * FROM ingeroosterd WHERE date BETWEEN '" + begin123 + "'  AND '" + eind123 + "'";
             label1.Content = "Maandag: " + GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString() + " En als laatste, Zondag: " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
             getMyDay(begin123, eind123);
+
+            // When change you want to change the grid as well :) 
+            var test = TestDateStuff();
+            var test1 = ConvertData(test);
+            this.dataGrid.ItemsSource = test1;
         }
 
 
@@ -265,6 +275,77 @@ namespace Het_Terras
         }
 
 
+
+        public List<activityUsers> TestDateStuff()
+        {
+            var result = new List<activityUsers>();
+            var startdate = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
+            var enddate = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
+
+            MySqlConnection myConnection = dbHelper.initiallizeDB();
+            string query = "SELECT * FROM ingeroosterd WHERE date BETWEEN '" + startdate + "'  AND '" + enddate + "'";
+            MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
+            var reader  = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                var activity = new activityUsers();
+                activity.ID = reader.GetInt32(0);
+                activity.firstname = reader.GetString(1);
+                activity.date = reader.GetString(2);
+                activity.begintijd = reader.GetString(3);
+                activity.eindtijd = reader.GetString(4);
+                activity.omschrijving = reader.GetString(5);
+                activity.totale_werkuren = reader.GetString(6);
+                activity.pauze = reader.GetString(7);
+
+
+                result.Add(activity);
+            }
+            reader.Close();
+            myConnection.Close();
+
+            return result;
+        }
+
+        private List<WeeklyActivity> ConvertData(List<activityUsers> activities) 
+        {
+            var result = new List<WeeklyActivity>();
+            var tmp = activities.GroupBy(a => a.firstname);
+            foreach (var item in tmp)
+            {
+                var r = new WeeklyActivity();
+                r.User = item.Key;
+                r.MondayActivity = GetActivity(item, DayOfWeek.Monday);
+                r.TuesdayActivity = GetActivity(item, DayOfWeek.Tuesday );
+                r.WednesdayActivity = GetActivity(item, DayOfWeek.Wednesday );
+                r.ThursdayActivity = GetActivity(item, DayOfWeek.Thursday );
+                r.FridayActivity = GetActivity(item, DayOfWeek.Friday );
+                r.SaturdayActivity = GetActivity(item, DayOfWeek.Saturday );
+                r.SundayActivity = GetActivity(item, DayOfWeek.Sunday);
+
+                r.Breaks = item.Sum(x => double.Parse( x.pauze));
+                r.TotalHours = item.Sum(x => double.Parse( x.totale_werkuren));
+               
+                result.Add(r);
+            }
+
+
+            return result;
+        }
+
+        private  string  GetActivity(IGrouping<string, activityUsers> item, DayOfWeek dayOfWeek)
+        {
+            var activity = item.FirstOrDefault(x => {
+                var d = DateTime.Parse(x.date).DayOfWeek;
+                return d== dayOfWeek;
+            });
+
+            if (activity != null)
+            {
+                return string.Format("{0} - {1}  {2}",activity.begintijd,activity.eindtijd, activity.omschrijving);
+            }
+            return string.Empty;
+        }
     }
   }
 

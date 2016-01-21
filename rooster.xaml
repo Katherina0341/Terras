@@ -69,20 +69,20 @@
         <Button x:Name="editDataButton" Content="Beheer data" HorizontalAlignment="Left" Margin="308,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92" Height="27" Click="editDataButton_Click"/>
         <Button x:Name="klokButton" Content="Inklokken" HorizontalAlignment="Left" Margin="14,14,0,0" Grid.Row="1" Width="92" Click="klokButton_Click" Height="27" VerticalAlignment="Top"/>
         <Button x:Name="uitklokButton" Content="Uitklokken" HorizontalAlignment="Left" Margin="113,14,0,0" Grid.Row="1" Width="92" Click="uitklokButton_Click" Height="27" VerticalAlignment="Top"/>
-        <DataGrid x:Name="dataGrid"  Margin="0,91,0,61" Grid.Row="1" ItemsSource="{Binding MyList  }" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*" >
+        <DataGrid x:Name="dataGrid"  Margin="0,91,0,61" Grid.Row="1" ItemsSource="{Binding   }" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*" RowHeight="30" >
             
             <DataGrid.Columns>
-                <DataGridTextColumn Header="X" Binding="{Binding Firstname }" />
-                <DataGridTextColumn Header="Maandag" Binding="{ Binding Monday}"  />
-                <DataGridTextColumn Header="Dinsdag " Binding="{ Binding Tuesday}"  /> <!-- Etc Etc -->
-                <DataGridTextColumn Header="Woensdag"  />
-                <DataGridTextColumn Header="Donderdad"  />
-                <DataGridTextColumn Header="Vrijdag"  />
-                <DataGridTextColumn Header="Zaterdag"  />
-                <DataGridTextColumn Header="Zondag"  />
-                <DataGridTextColumn Header="Totalen uren"  />
-                <DataGridTextColumn Header="Pauze"  />
-                <DataGridTextColumn Header="Uren uitbetaald"  />
+                <DataGridTextColumn Header="X" Binding="{Binding User}" />
+                <DataGridTextColumn Header="Monday" Binding="{ Binding MondayActivity}"  />
+                <DataGridTextColumn Header="Tuesday " Binding="{ Binding TuesdayActivity }"  /> <!-- Etc Etc -->
+                <DataGridTextColumn Header="Wednesday" Binding="{ Binding WednesdaydayActivity }" />
+                <DataGridTextColumn Header="Thursday" Binding="{ Binding ThursdayActivity }" />
+                <DataGridTextColumn Header="Friday"  Binding="{ Binding FridayActivity }"/>
+                <DataGridTextColumn Header="Zaterdag" Binding="{ Binding SaturActivity }" />
+                <DataGridTextColumn Header="Zondag" Binding="{ Binding SundayActivity }" />
+                <DataGridTextColumn Header="Total hours " Binding="{ Binding TotalHours }" />
+                <DataGridTextColumn Header="breaks"  Binding="{ Binding Breaks }"/>
+                <DataGridTextColumn Header="paid hours" Binding="{ Binding PaidHours }" /> <!-- paid hours =  Total hours - breaks -->
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="vorigButton" Content="Vorige Week" HorizontalAlignment="Left" Margin="12,66,0,0" Grid.Row="1" VerticalAlignment="Top" Width="119" Click="vorigButton_Click"/>

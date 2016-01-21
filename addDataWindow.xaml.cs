@@ -35,7 +35,7 @@ namespace Het_Terras
             InitializeComponent();         
         }
 
-       public void activiteitButton_Click(object sender, RoutedEventArgs e)
+        public void activiteitButton_Click(object sender, RoutedEventArgs e)
         {
             var test = myCalendar.SelectedDate.Value.Date.ToShortDateString();
             var beginplus = beginUurCombo.Text + ':' + beginMinuutCombo.Text;
@@ -56,22 +56,45 @@ namespace Het_Terras
             double eindgedeeld = einduitgerekend / 60;
             // We Calculate how many hours the employee has worked:
             // int x = eindgedeeld - begingedeeld;
-            double x = eindgedeeld - begingedeeld; 
+            double x = eindgedeeld - begingedeeld;
             Console.Write(x);
             // nu de pauzes verekenen: 
             double pauze = 0;
-            if (beginuur == 8 && einduur >= 17)
+            if (beginuur == 10 && einduur >= 18)
             {
-                pauze = 0.5;                
+                pauze = 0.5;
             }
-            else if (beginuur >= 12 && einduur <= 15)
-            {
-                pauze = 0;
-            }
-            else if (beginuur <= 8 && einduur < 12)
+
+            else if (beginuur <= 10 && einduur <= 12)
             {
                 pauze = 0;
             }
+
+            else if (beginuur <= 10 && einduur <= 15)
+            {
+                pauze = 0.25;
+            }
+
+
+            else if (beginuur <= 10 && einduur >= 17)
+            {
+                pauze = 0.5;
+            }
+
+            else if (beginuur >= 12 && einduur <= 13)
+            {
+                pauze = 0;
+            }
+
+            else if (beginuur <= 12 && einduur <= 17)
+            {
+                pauze = 0.25;
+            }
+
+            else
+            {
+                MessageBox.Show("Onbekende tijdstip! Vraag aan Administrator of degene de pauze met de hand kan invoeren.");
+            } 
 
             //  pauzes verwerkt, nu aftrekken van x 
             double betaaluren = x - pauze;
