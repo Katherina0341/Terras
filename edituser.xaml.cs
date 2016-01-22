@@ -39,6 +39,8 @@ namespace Het_Terras
            // MynewList = _staffObj.fetchNotes("SELECT * FROM  intranet_users ");
             DataContext = this;          
             InitializeComponent();
+            welkomLabel.Content = "Welkom " + Properties.Settings.Default.username + " u bent succesvol ingelogd";
+
 
         }
 

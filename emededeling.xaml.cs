@@ -37,6 +37,8 @@ namespace Het_Terras
           //  LoadList = _staffObj.fetchingstuff("SELECT * FROM  terras_mededelingen");
             DataContext = this;
             InitializeComponent();
+            welkomLabel.Content = "Welkom " + Properties.Settings.Default.username + " u bent succesvol ingelogd";
+
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)

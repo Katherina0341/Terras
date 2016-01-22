@@ -37,6 +37,7 @@ namespace Het_Terras
             // MynewList = _staffObj.fetchNotes("SELECT * FROM  intranet_users ");
             DataContext = this;
             InitializeComponent();
+            welkomLabel.Content = "Welkom " + Properties.Settings.Default.username + " u bent succesvol ingelogd";
 
         }
 
@@ -88,7 +89,7 @@ namespace Het_Terras
 
         private void dpdateCalendar_OnSelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            var myDay = dpDateCalendar.SelectedDate.Value.Date.ToShortDateString();
+            var myDay = dpDateCalendar.SelectedDate.Value.Date.ToString("yyyy-MM-dd");
             var staffObj = ((staff)datComboBox.SelectedItem).Firstname; // Here I take the value's name into a variable will need this for my query!      
             string querywhere = "SELECT * FROM ingeroosterd WHERE firstname = '" + staffObj + "' AND date = '" + myDay + "'";
             activityDB db = new activityDB();
@@ -122,10 +123,10 @@ namespace Het_Terras
             foreach (DateTime currDate in dateCalender.SelectedDates)
             {
                // System.Diagnostics.Debug.Print(currDate.ToString());
-                var eerste = dateCalender.SelectedDates[0];
-                var tweede = dateCalender.SelectedDates[dateCalender.SelectedDates.Count - 1];
+                var firstDate = dateCalender.SelectedDates[0].ToString("yyyy-MM-dd");
+                var secondDate = dateCalender.SelectedDates[dateCalender.SelectedDates.Count - 1].ToString("yyyy-MM-dd");
                 // System.Diagnostics.Debug.Print(eerste.ToString());
-                string query = "SELECT * FROM ingeroosterd WHERE date BETWEEN '" + eerste + "' AND '" + tweede +"'";
+                string query = "SELECT * FROM ingeroosterd WHERE date BETWEEN '" + firstDate + "' AND '" + secondDate +"'";
                 activityDB db = new activityDB();
                 MynewList = db.fetchNotes(query);
                 dataGrid.ItemsSource = null;
@@ -156,8 +157,8 @@ namespace Het_Terras
             foreach (var item in MynewList)
             {
                 // Update each user individually
-
-                var query = $"UPDATE ingeroosterd SET firstname = '{item.firstname}', date = '{item.date}', begintijd = '{item.begintijd}', eindtijd = '{item.eindtijd}', omschrijving = '{item.omschrijving}', totale_werkuren = '{item.totale_werkuren}', pauze = '{item.pauze}' WHERE ID = '{item.ID}' LIMIT 1";
+                var d = DateTime.Parse(item.date);
+                var query = $"UPDATE ingeroosterd SET firstname = '{item.firstname}', date = '{d.ToString("yyyy-MM-dd")}', begintijd = '{item.begintijd}', eindtijd = '{item.eindtijd}', omschrijving = '{item.omschrijving}', totale_werkuren = '{item.totale_werkuren}', pauze = '{item.pauze}' WHERE ID = '{item.ID}' LIMIT 1";
                 // execute it...
                 MySqlCommand sqlCommand = new MySqlCommand(query, myConnection);
                 int rows_inserted = sqlCommand.ExecuteNonQuery();

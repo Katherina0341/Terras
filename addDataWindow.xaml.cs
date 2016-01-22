@@ -37,7 +37,7 @@ namespace Het_Terras
 
         public void activiteitButton_Click(object sender, RoutedEventArgs e)
         {
-            var test = myCalendar.SelectedDate.Value.Date.ToShortDateString();
+            var test = myCalendar.SelectedDate.Value.Date.ToString("yyyy-MM-dd");
             var beginplus = beginUurCombo.Text + ':' + beginMinuutCombo.Text;
             var eindplus = eindUurCombo.Text + ':' + eindMinuutCombo.Text;
             // Start converting everything to int! 

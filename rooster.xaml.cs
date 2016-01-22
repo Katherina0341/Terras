@@ -31,21 +31,20 @@ namespace Het_Terras
         private newstaffDBcs _staffDB = new newstaffDBcs();
 
         public rooster()
-        {
+        {           
             InitializeComponent();
             testAdmin();
             currentWeek();
             GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
             GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
             var begin = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
-            var eind = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));                  
+            var eind = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));      
+            welkomLabel.Content = "Welkom " + Properties.Settings.Default.username + " u bent succesvol ingelogd";       
             label1.Content = "Maandag: " + GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString() + " En als laatste, Zondag: " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
             MyList = _staffDB.fetchStaff();      
             EachDay(begin, eind);
             getMyDay(begin, eind);
-            var test = TestDateStuff();
-            var test1 = ConvertData(test);
-            this.dataGrid.ItemsSource = test1;
+            RefreshDataGrid();
             DataContext = this;
         }
 
@@ -108,6 +107,7 @@ namespace Het_Terras
                  MessageBox.Show("U bent al bij week 1!");
               }
               weekNummerTextBox.Text = toResult.ToString();
+            RefreshDataGrid();
         }
 
         // Volgende knop ||| Next Week Button
@@ -120,7 +120,8 @@ namespace Het_Terras
                 toResult = 53;
                 MessageBox.Show("U bent al bij week 53");       
             }
-            weekNummerTextBox.Text = toResult.ToString();            
+            weekNummerTextBox.Text = toResult.ToString();
+            RefreshDataGrid();        
         }
 
         // get  first day of weeknumber
@@ -183,12 +184,13 @@ namespace Het_Terras
             var eind123 = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text));
            // string query = "SELECT * FROM ingeroosterd WHERE date BETWEEN '" + begin123 + "'  AND '" + eind123 + "'";
             label1.Content = "Maandag: " + GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString() + " En als laatste, Zondag: " + GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
-            getMyDay(begin123, eind123);
+            getMyDay(begin123, eind123);        
+            //var test = GetDbActivities();
+            //var test1 = ConvertData(test);
 
-            // When change you want to change the grid as well :) 
-            var test = TestDateStuff();
-            var test1 = ConvertData(test);
-            this.dataGrid.ItemsSource = test1;
+        //    this.dataGrid.ItemsSource = test1;
+         //   CollectionViewSource.GetDefaultView(dataGrid.ItemsSource).Refresh();
+
         }
 
 
@@ -253,6 +255,21 @@ namespace Het_Terras
             this.Hide();
         }
 
+        private void excelButton_Click(object sender, RoutedEventArgs e)
+        {
+            var exporter = new FileExporter();
+            var data = this.dataGrid.ItemsSource as List<WeeklyActivity>;
+            var startdate = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString("yyyy-MM-dd");
+            var enddate = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString("yyyy-MM-dd");
+          var result =   exporter.ExportToExcel(data,startdate,enddate );
+            if (result)
+            {
+                MessageBox.Show("Bestand is correct geimporteerd naar Excel", "", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        
+
         private void quitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -276,11 +293,11 @@ namespace Het_Terras
 
 
 
-        public List<activityUsers> TestDateStuff()
+        public List<activityUsers> GetDbActivities()
         {
             var result = new List<activityUsers>();
-            var startdate = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
-            var enddate = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToShortDateString();
+            var startdate = GetFirstDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString("yyyy-MM-dd");
+            var enddate = GetLastDateOfWeekByWeekNumber(Convert.ToInt32(weekNummerTextBox.Text)).ToString("yyyy-MM-dd");
 
             MySqlConnection myConnection = dbHelper.initiallizeDB();
             string query = "SELECT * FROM ingeroosterd WHERE date BETWEEN '" + startdate + "'  AND '" + enddate + "'";
@@ -346,6 +363,18 @@ namespace Het_Terras
             }
             return string.Empty;
         }
+
+        private void RefreshDataGrid()
+        {
+            var dbActivities = GetDbActivities();
+            var weeklyActivities = ConvertData(dbActivities);
+            this.dataGrid.ItemsSource = weeklyActivities;
+        }
+
+        // excel
+
+
+
     }
   }
 

@@ -31,12 +31,36 @@ namespace Het_Terras
 
         public klokwindow()
         {
+
             MyList = _combo.fetchStaff();
             DataContext = this;
             InitializeComponent();
+            checkAdmin();
+
             dpDate.SelectedDate = DateTime.Today;
             //  label1.Content = DateTime.Now.ToString();
             label1.Content = DateTime.Now.ToString("HH:mm");
+        }
+
+        public void checkAdmin()
+        {
+            var name = Properties.Settings.Default.username;
+            if(name != "admin")
+            {
+                comboBox.Items.Add(name);
+                comboBox.SelectedIndex = 0;
+
+            }
+
+            else
+            {
+                comboBox.ItemsSource = MyList;
+                comboBox.DisplayMemberPath = "Firstname";
+            }
+
+                //comboBox.Items.Add(name);
+            //}             
+
         }
 
         private void klokButton_Click(object sender, RoutedEventArgs e)

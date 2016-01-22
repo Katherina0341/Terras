@@ -28,6 +28,8 @@ namespace Het_Terras
             InitializeComponent();
             MyList = _staffDB.fetchStaff();
             DataContext = this;
+            welkomLabel.Content = "Welkom " + Properties.Settings.Default.username + " u bent succesvol ingelogd";
+
         }
 
         private void dashboardButton_Click(object sender, RoutedEventArgs e)

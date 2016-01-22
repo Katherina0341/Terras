@@ -39,3 +39,4 @@ C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\ob
 C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\uitklokwindow.baml
 C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\UserControl1.g.cs
 C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\UserControl1.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het Terras.csproj.ResolveComReference.cache

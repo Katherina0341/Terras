@@ -37,7 +37,8 @@ namespace Het_Terras
                             activityUsers note = new activityUsers();
                             note.ID = reader.GetInt32(reader.GetOrdinal("ID"));                       
                             note.firstname = reader.GetString(reader.GetOrdinal("firstname"));
-                            note.date = reader.GetString(reader.GetOrdinal("date"));
+                            note.date = reader.GetString(reader.GetOrdinal("date")); //uuhhhhhh 
+                            // Voila! nn? 
                             note.begintijd = reader.GetString(reader.GetOrdinal("begintijd"));
                             note.eindtijd = reader.GetString(reader.GetOrdinal("eindtijd"));
                             //note.active = reader.GetInt32(reader.GetOrdinal("active"));

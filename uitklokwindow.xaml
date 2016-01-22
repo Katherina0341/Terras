@@ -8,7 +8,7 @@
       Title="Het Terras - Roosters - Uitklokken" Height="252.101" Width="305.882" ResizeMode="NoResize">
     <Grid>
         <Label x:Name="naamLabel" Content="Selecteer Personeel:" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Center" Margin="0,66,0,0" VerticalAlignment="Top" Width="121" Height="30"  ItemsSource="{Binding MyList}" DisplayMemberPath="Firstname" />
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Center" Margin="0,66,0,0" VerticalAlignment="Top" Width="121" Height="30"  />
         <Label x:Name="label1" Content="Label" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top"/>
         <Button x:Name="klokButton" Content="Klok mij uit!" HorizontalAlignment="center" Margin="0,135,0,0" VerticalAlignment="Top" Width="91" Height="33" Click="klokButton_Click"/>
         <DatePicker Name="dpDate"  HorizontalAlignment="Left" Margin="198,199,0,-73" VerticalAlignment="Top" Height="97" Width="100" Visibility="Hidden" IsEnabled="False"/>

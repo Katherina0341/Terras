@@ -38,7 +38,7 @@
             <Button x:Name="personeelButton" Content="Personeel" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="personeelButton_Click"/>
             <Button x:Name="quitButton" Content="Quit" HorizontalAlignment="Left" Margin="285,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="quitButton_Click"/>
 
-            <Label x:Name="welkomLabel" Content="Welkom gebruiker! U bent ingelogd als Administrator" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black"/>
+            <Label x:Name="welkomLabel" Content="" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black"/>
         </Grid>
         <Grid x:Name="footerGrid" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Bottom" ClipToBounds="True">
 
@@ -69,16 +69,18 @@
         <Button x:Name="editDataButton" Content="Beheer data" HorizontalAlignment="Left" Margin="308,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92" Height="27" Click="editDataButton_Click"/>
         <Button x:Name="klokButton" Content="Inklokken" HorizontalAlignment="Left" Margin="14,14,0,0" Grid.Row="1" Width="92" Click="klokButton_Click" Height="27" VerticalAlignment="Top"/>
         <Button x:Name="uitklokButton" Content="Uitklokken" HorizontalAlignment="Left" Margin="113,14,0,0" Grid.Row="1" Width="92" Click="uitklokButton_Click" Height="27" VerticalAlignment="Top"/>
+        <Button x:Name="excelButton" Content="Excel" HorizontalAlignment="Left" Margin="407,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="92" Height="27" Click="excelButton_Click"/>
+
         <DataGrid x:Name="dataGrid"  Margin="0,91,0,61" Grid.Row="1" ItemsSource="{Binding   }" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*" RowHeight="30" >
             
             <DataGrid.Columns>
                 <DataGridTextColumn Header="X" Binding="{Binding User}" />
                 <DataGridTextColumn Header="Monday" Binding="{ Binding MondayActivity}"  />
                 <DataGridTextColumn Header="Tuesday " Binding="{ Binding TuesdayActivity }"  /> <!-- Etc Etc -->
-                <DataGridTextColumn Header="Wednesday" Binding="{ Binding WednesdaydayActivity }" />
+                <DataGridTextColumn Header="Wednesday" Binding="{ Binding WednesdayActivity }" />
                 <DataGridTextColumn Header="Thursday" Binding="{ Binding ThursdayActivity }" />
                 <DataGridTextColumn Header="Friday"  Binding="{ Binding FridayActivity }"/>
-                <DataGridTextColumn Header="Zaterdag" Binding="{ Binding SaturActivity }" />
+                <DataGridTextColumn Header="Zaterdag" Binding="{ Binding SaturdayActivity }" />
                 <DataGridTextColumn Header="Zondag" Binding="{ Binding SundayActivity }" />
                 <DataGridTextColumn Header="Total hours " Binding="{ Binding TotalHours }" />
                 <DataGridTextColumn Header="breaks"  Binding="{ Binding Breaks }"/>
