@@ -1,0 +1,64 @@
+﻿<Window x:Class="Het_Terras.personeel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Het_Terras"
+        mc:Ignorable="d"
+        Title="Het Terras - Personeel" WindowStartupLocation="CenterOwner" Height="546.154" Width="750.962" FontWeight="Bold" WindowState="Maximized" UseLayoutRounding="False">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FF707070" Offset="1"/>
+            <GradientStop Color="White" Offset="0.083"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid x:Name="contentGrid" Margin="0,88,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FFDAD8D8" Offset="1"/>
+                <GradientStop Color="White" Offset="0.462"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="263*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="navGrid" Height="90" Margin="0,-89,0,0" VerticalAlignment="Top">
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+            </Grid.Background>
+
+
+
+            <Button x:Name="dashboardButton" Content="Dashboard" HorizontalAlignment="Left" Margin="19,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="dashboardButton_Click"/>
+            <Button x:Name="roosterButton" Content="Roosters" HorizontalAlignment="Left" Margin="108,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="roosterButton_Click"/>
+            <Button x:Name="personeelButton" Content="Personeel" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black"/>
+            <Button x:Name="quitButton" Content="Quit" HorizontalAlignment="Left" Margin="285,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="quitButton_Click"/>
+
+            <Label x:Name="welkomLabel" Content="Welkom gebruiker! U bent ingelogd als Administrator" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black"/>
+        </Grid>
+        <Grid x:Name="footerGrid" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Bottom">
+
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="251*"/>
+
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label" Content="Het Terras - 2015"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="270,14,231,13" Width="242" />
+            <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Width="2000" />
+            <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="2000" />
+        </Grid>
+        <Button x:Name="nieuwButton" Content="Voeg Personeel toe" HorizontalAlignment="Left" Margin="18,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="26" Click="nieuwButton_Click"/>
+        <Button x:Name="editpersoneelButton" Content="Beheer Personeel" HorizontalAlignment="Left" Margin="180,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="146" Height="26" Click="editpersoneelButton_Click"/>
+        <DataGrid x:Name="dataGrid" ItemsSource="{Binding MyList}" AutoGenerateColumns="True" ColumnWidth="*" IsReadOnly="True" Margin="0,65,0,0" Grid.Row="1" VerticalAlignment="Top" Height="auto" SelectionChanged="dataGrid_SelectionChanged_1" CanUserResizeRows="False" CanUserResizeColumns="False"/>
+
+
+    </Grid>
+</Window>
+
+

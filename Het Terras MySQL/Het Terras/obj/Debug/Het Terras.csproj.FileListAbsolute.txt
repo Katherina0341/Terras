@@ -1,0 +1,42 @@
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\bin\Debug\Het Terras.exe.config
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\bin\Debug\Het Terras.exe
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\bin\Debug\Het Terras.pdb
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het Terras.csprojResolveAssemblyReference.cache
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\MainWindow.g.cs
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\App.g.cs
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het Terras_MarkupCompile.cache
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het Terras_MarkupCompile.lref
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\MainWindow.baml
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het Terras.g.resources
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het_Terras.Properties.Resources.resources
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het Terras.csproj.GenerateResource.Cache
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het Terras.exe
+c:\users\stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het Terras.pdb
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\mededeling.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\mededeling.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\emededeling.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\emededeling.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\bin\Debug\MySql.Data.dll
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\bin\Debug\MySql.Web.dll
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Rooster.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Rooster.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\personeel.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\personeelwindow.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\personeel.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\personeelwindow.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\edituser.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\edituser.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\addDataWindow.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\addDataWindow.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\editDataWindow.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\editDataWindow.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\login.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\login.baml
+C:\Users\Stagiair\Documents\Visual Studio 2015\Projects\Het Terras\Het Terras\obj\Debug\App.baml
+C:\Users\Stagiair\Documents\Visual Studio 2015\Projects\Het Terras\Het Terras\obj\Debug\klokwindow.g.cs
+C:\Users\Stagiair\Documents\Visual Studio 2015\Projects\Het Terras\Het Terras\obj\Debug\klokwindow.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\uitklokwindow.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\uitklokwindow.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\UserControl1.g.cs
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\UserControl1.baml
+C:\Users\Stagiair\documents\visual studio 2015\Projects\Het Terras\Het Terras\obj\Debug\Het Terras.csproj.ResolveComReference.cache

@@ -1,0 +1,68 @@
+﻿<Window x:Class="Het_Terras.editDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Het_Terras"
+        mc:Ignorable="d"
+     Title="Het Terras - Aanpassen Activiteiten" WindowStartupLocation="CenterOwner" Height="546.154" Width="750.962" FontWeight="Bold" WindowState="Maximized" UseLayoutRounding="False">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+            <GradientStop Color="#FF707070" Offset="1"/>
+            <GradientStop Color="White" Offset="0.083"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid x:Name="contentGrid" Margin="0,88,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FFDAD8D8" Offset="1"/>
+                <GradientStop Color="White" Offset="0.462"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="263*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="navGrid" Height="90" Margin="0,-89,0,0" VerticalAlignment="Top">
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+            </Grid.Background>
+
+
+
+            <Button x:Name="dashboardButton" Content="Dashboard" HorizontalAlignment="Left" Margin="19,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="dashboardButton_Click"/>
+            <Button x:Name="roosterButton" Content="Roosters" HorizontalAlignment="Left" Margin="108,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="roosterButton_Click_1"/>
+            <Button x:Name="personeelButton" Content="Personeel" HorizontalAlignment="Left" Margin="197,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="personeelButton_Click_1"/>
+            <Button x:Name="quitButton" Content="Quit" HorizontalAlignment="Left" Margin="285,49,0,0" VerticalAlignment="Top" Width="75" Height="33" BorderBrush="Black" Click="quitButton_Click"/>
+            <Label x:Name="welkomLabel" Content="Welkom gebruiker! U bent ingelogd als Administrator" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" Width="337" BorderBrush="Black"/>
+        </Grid>
+        <Grid x:Name="footerGrid" Height="53" Margin="0,361,0,0" Grid.Row="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.InactiveCaptionColorKey}}"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="251*"/>
+
+            </Grid.ColumnDefinitions>
+            <Label x:Name="label" Content="Het Terras - 2015"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Margin="270,14,231,13" Width="242" />
+            <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="1" Width="2000" />
+            <Border HorizontalAlignment="Left" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="1" Width="2000" />
+        </Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="-262,94,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
+        <Label x:Name="label1" Grid.Column="1" HorizontalAlignment="Left" Margin="188,31,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Calendar Name="dpDateCalendar" SelectedDatesChanged="dpdateCalendar_OnSelectedDatesChanged" HorizontalAlignment="Left" Margin="17,58,0,0" Grid.Row="1" VerticalAlignment="Top" SelectionMode="SingleRange" FirstDayOfWeek="Monday" Visibility="Collapsed" />
+        <ComboBox x:Name="datComboBox" ItemsSource="{Binding MyList}" DisplayMemberPath="Firstname" HorizontalAlignment="Left" Margin="43,34,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" SelectionChanged="datComboBox_SelectionChanged"/>
+        <Button x:Name="saveButton" Content="Save" Margin="202,24,0,0" Grid.Row="1" VerticalAlignment="Top" Click="saveButton_Click" Height="32" HorizontalAlignment="Left" Width="89"/>
+        <DataGrid x:Name="dataGrid" Margin="201,58,6,54" Grid.Row="1" ItemsSource="{Binding MynewList  }" AutoGenerateColumns="True"/>
+        <Label x:Name="label2" Content="Selecteer op werknemer:" HorizontalAlignment="Left" Margin="31,7,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Selecteer op Data:" HorizontalAlignment="Left" Margin="46,233,0,0" Grid.Row="1" VerticalAlignment="Top" RenderTransformOrigin="0.525,0.577"/>
+        <Calendar x:Name="dateCalender"  HorizontalAlignment="Left" Margin="7,255,0,-1" Grid.Row="1" VerticalAlignment="Top" Height="170" Width="199" SelectedDatesChanged="dateCalender_OnSelectedDatesChanged" SelectionMode="SingleRange"/>
+        <Label x:Name="label4" Content="Label" HorizontalAlignment="Left" Margin="348,27,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Window>
