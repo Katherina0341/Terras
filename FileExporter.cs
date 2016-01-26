@@ -62,6 +62,8 @@ namespace Het_Terras
                 workSheet.Cells[i + 2, "K"] = activity.PaidHours;
 
             }
+            workSheet.Rows.RowHeight = 32;
+            workSheet.Columns.ColumnWidth = 20;
             excelApp.ActiveWorkbook.SaveAs(sfd.FileName);
             excelApp.Quit();
             return true;
